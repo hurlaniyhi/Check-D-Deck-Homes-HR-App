@@ -23,8 +23,8 @@ const Home = () => {
                 <p class="sales-plus">Land, Buildings, and other properties</p>
             </div>
             <div class="navigate">
-                    <a class="nav1" href="#" onClick={()=> Login("Admin")}>Get started as Admin</a>
-                    <a class="nav1" href="#" onClick={()=> Login("Staff")}>Get started Staff</a>
+                    <a class="nav1" onClick={()=> Login("Admin")}>Get started as Admin</a>
+                    <a class="nav1" onClick={()=> Login("Staff")}>Get started Staff</a>
             </div>
         </div>
     )

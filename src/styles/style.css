@@ -1,5 +1,6 @@
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  height: 100%; }
   @media (max-width: 56.25em) {
     html {
       font-size: 50%; } }
@@ -42,7 +43,8 @@ html {
 body {
   box-sizing: border-box;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  background: linear-gradient(to right, rgba(2, 0, 37, 0.9), rgba(0, 1, 0, 0.9)); }
 
 #container {
   background-image: linear-gradient(to right, rgba(2, 0, 37, 0.9), rgba(0, 1, 0, 0.9)), url("../assets/backImage.jpeg");
@@ -86,6 +88,9 @@ body {
     .navigate {
       flex-direction: column;
       margin-top: 18vh; } }
+  @media (max-width: 320px) {
+    .navigate {
+      margin-top: 10vh; } }
 
 .nav1 {
   padding: 2.4rem 2.2rem;
@@ -109,17 +114,17 @@ body {
       margin-bottom: 4.2rem; } }
 
 #login-container {
-  background-image: linear-gradient(to right, rgba(2, 0, 37, 0.9), rgba(0, 1, 0, 0.9));
-  height: 100vh;
-  padding-top: 7vh;
-  position: relative; }
+  height: 100%; }
 
 .form-wrap {
-  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 33%;
   background-color: white;
   padding: 4rem 2rem 10rem 2rem;
-  border-radius: 10px; }
+  border-radius: 10px;
+  transform: translate(-50%, -50%); }
   @media (max-width: 700px) {
     .form-wrap {
       width: 40%; } }

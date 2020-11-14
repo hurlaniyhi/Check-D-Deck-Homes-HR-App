@@ -23,6 +23,7 @@
 
 html {
     font-size: 62.5%;
+    height: 100%;
   
     @include respond(tab-port) {
       font-size: 50%; // 1rem = 8px, 8/16 * 100 = 50%
@@ -90,7 +91,13 @@ html {
 body{
     box-sizing: border-box;
     padding: 0;
-    margin: 0
+    margin: 0;
+    background: linear-gradient(
+      to right,
+      rgba(2, 0, 37, .9),
+      rgba(0, 1, 0, 0.9)
+    );
+   
 }
 
 #container{
@@ -146,6 +153,11 @@ body{
         flex-direction: column;
         margin-top: 18vh;
       }
+
+    @media (max-width: 320px) {
+      
+      margin-top: 10vh;
+    }
 }
 
 .nav1{
@@ -180,22 +192,26 @@ body{
 // LOGIN PAGE
 
 #login-container{
-    background-image:linear-gradient(
-        to right,
-        rgba(2, 0, 37, .9),
-        rgba(0, 1, 0, 0.9)
-      );
-    height: 100vh;
-    padding-top: 7vh;
-    position: relative;
+    // background-image:linear-gradient(
+    //     to right,
+    //     rgba(2, 0, 37, .9),
+    //     rgba(0, 1, 0, 0.9)
+    //   );
+     height: 100%;
+    // padding-top: 1rem;
+    
 }
 
 .form-wrap{
-    margin: 0 auto;
+    //margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 33%;
     background-color: white;
     padding: 4rem 2rem 10rem 2rem;
     border-radius: 10px;
+    transform: translate(-50%, -50%);
 
     @media (max-width: 700px){
       width: 40%;
@@ -243,6 +259,11 @@ body{
     margin-bottom: 2.6rem;
     border-radius: 5px;
     overflow: hidden;
+    // pointer-events: none;
+
+    // .parent:focus-within {
+    //   border: 1px solid green;
+    // }
 }
 .icon-container{
   width: 15%;
@@ -265,15 +286,6 @@ body{
       height: 5rem;
     }
 
-    // @media (max-width: 680px){
-    //   width: 40%;
-    //   height: 7rem;
-    // }
-
-    // @media (max-width: 550px){
-    //   width: 45%;
-    //   height: 9rem;
-    // }
 }
 
 .user-input{
@@ -283,6 +295,7 @@ body{
     outline: none;
     width: 80%;
     border-left: 1px solid #eee;
+    // pointer-events: auto;
 }
 
 .label{

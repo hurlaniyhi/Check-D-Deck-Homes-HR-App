@@ -13,6 +13,14 @@ const Login = () => {
         history.push("/")
     }
 
+    function changeColor(id){
+        document.querySelector(id).style.border = "1.8px solid #00039B"
+    }
+
+    function reverseColor(id){
+        document.querySelector(id).style.border = "1px solid rgba(0, 0, 0, .2)"
+    }
+
     var title = localStorage.getItem("info")
 
     return(
@@ -22,14 +30,14 @@ const Login = () => {
             <img class="login-logo" src={logo} />
                 <p class="form-title">Login as {title}</p>
                 <label class="label">Username</label>
-                <div class="cover-input">
+                <div class="cover-input" id="input1">
                     <div class="icon-container"><FaUser class="user-icon"/></div>
-                    <input class="user-input" type="text" placeholder="Enter username" required/>
+                    <input class="user-input" onClick={()=>changeColor("#input1")} onBlur={()=>reverseColor("#input1")} type="text" placeholder="Enter username" required/>
                 </div>
                 <label class="label">Password</label>
-                <div class="cover-input">
+                <div class="cover-input" id="input2">
                 <div class="icon-container"><FaLock class="user-icon"/></div>
-                    <input class="user-input" type="password" placeholder="Enter Password" required/>
+                    <input class="user-input" type="password" placeholder="Enter Password" onClick={()=>changeColor("#input2")} onBlur={()=>reverseColor("#input2")} required/>
                 </div>
                 <a class="login-button" onClick={()=> signIn()} >Login</a>
             </div>
