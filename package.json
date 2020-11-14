@@ -2,20 +2,30 @@
   "name": "staff-manager",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.14.6",
+    "node": "12.18.3"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "serve": "^11.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -s build",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "compile:sass": "node-sass sass/main.scss src/styles/style.css -w"
   },
   "eslintConfig": {
     "extends": [
