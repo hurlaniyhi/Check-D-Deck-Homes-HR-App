@@ -85,6 +85,102 @@ html {
       transform: translate(0);
     }
   }
+
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(15rem);
+    }
+  
+    80% {
+      transform: translateX(-1rem);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+  }
+
+
+  @-webkit-keyframes color-change {
+    0% {
+      color:white
+    }
+
+    30% {
+      color: green
+     
+    }
+
+    60% {
+      // color: #eee
+      color: #421DEF
+    }
+  
+    80% {
+      // color: yellow
+      color: green
+    }
+  
+    100% {
+      opacity: 1;
+      color: purple
+    }
+  }
+
+
+  @-moz-keyframes color-change {
+    0% {
+      color:white
+    }
+
+    30% {
+      // color: green
+      color: #6666FF
+    }
+
+    60% {
+      color: #eee
+    }
+  
+    80% {
+      // color: yellow
+      color: green
+    }
+  
+    100% {
+      opacity: 1;
+      color: purple
+    }
+  }
+  
+
+
+  @keyframes color-change {
+    0% {
+      color:white
+    }
+
+    30% {
+      // color: green
+      color: #6666FF
+    }
+
+    60% {
+      color: #eee
+    }
+  
+    80% {
+      // color: yellow
+      color: green
+    }
+  
+    100% {
+      opacity: 1;
+      color: purple
+    }
+  }
   
 
 
@@ -127,19 +223,23 @@ body{
 .greeting{
     font-size: 4rem;
     text-align: center;
-    animation: moveInLeft 1s ease-out 0.9s;
+    -webkit-animation: color-change 3s infinite 1s;
+    -moz-animation: color-change 3s infinite 1s;
+    animation: color-change 3s infinite 1s;
     padding: 0 4rem
 }
 
 .sales{
     text-align: center;
     font-size: 2rem;
-    padding: 0 4rem
+    padding: 0 4rem;
+    animation: moveInLeft 2s ease-out;
 }
 
 .sales-plus{
     text-align: center;
     font-size: 1.6rem;
+    animation: moveInRight 2s ease-out;
 }
 
 .navigate{
