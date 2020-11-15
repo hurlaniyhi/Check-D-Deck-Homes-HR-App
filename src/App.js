@@ -2,16 +2,18 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Home from './components/Homepage'
 import Login from './components/Login'
+import AdminDashboard from './components/AdminDashboard'
+import Chat from './components/Chat'
 
 function App() {
   return (
     <Router>
-        <div>
           <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/login" exact component={Login}></Route>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/admin" component={AdminDashboard}></Route>
+          <Route path="/chat" component={Chat}></Route>
           </Switch>
-        </div>
       </Router>
   )
 }

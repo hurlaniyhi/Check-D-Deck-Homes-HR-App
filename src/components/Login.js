@@ -10,7 +10,7 @@ const Login = () => {
 
     function signIn(){
         alert("you will be signed in wooooo!")
-        history.push("/")
+        history.push("/admin")
     }
 
     function changeColor(id){
@@ -22,6 +22,7 @@ const Login = () => {
     }
 
     var title = localStorage.getItem("info")
+    document.body.style.background = "linear-gradient(to right, rgba(2, 0, 37, .9), rgba(0, 1, 0, 0.9))"
 
     return(
         <div id="login-container">
