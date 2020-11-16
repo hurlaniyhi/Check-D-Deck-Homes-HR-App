@@ -457,7 +457,7 @@ body{
   top: 0;
   left: 0;
   right: 0;
-  z-index: 5;
+  z-index: 5; 
   
     .logout-icon{
       width: 2.5rem;
@@ -487,6 +487,8 @@ body{
       font-size: 1.8rem;
       font-weight: 400;
       transform: translateY(-50%);
+      outline: none;
+      transition: all .3s;
 
       @media (max-width: 450px){
         left: 1.5rem
@@ -599,6 +601,7 @@ body{
     padding: 3rem 0 1rem 0;
     background-color: #eee;
     border-radius: 5px;
+   
 
     @media (max-width: 450px){
       left: 1.5rem;
@@ -625,6 +628,7 @@ body{
       cursor: pointer;
       //border-radius: 5px;
       font-size: 1.5rem;
+      outline: none;
       transition: background-Image .7s;
       background: rgba(230, 230, 230, .8);
       text-decoration: none;
@@ -672,6 +676,7 @@ body{
       position: absolute;
       top: 2rem;
       right: 7rem;
+      outline: none;
 
         @media (max-width: 680px){
           right: 3rem
@@ -703,6 +708,8 @@ body{
       height: 5rem;
       border-radius: 50%;
       background-color: #fff;
+      outline: none;
+      transition: all .3s;
 
         &:hover, &:focus, &:active {
           background-color: rgba(purple, .2);
@@ -754,6 +761,8 @@ body{
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  outline: none;
+  transition: all .3s;
 
     &:hover{
       background-color: rgba(purple, .2);
@@ -787,6 +796,7 @@ body{
         color: rgba(#00039B, .7);
         font-size: 1.4rem;
         font-weight: 600;
+        outline: none;
 
         @media (max-width: 317px){
           font-size: 1.2rem;
