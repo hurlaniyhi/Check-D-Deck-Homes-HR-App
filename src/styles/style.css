@@ -385,6 +385,10 @@ body {
     padding: 3rem 0 1rem 0;
     background-color: #eee;
     border-radius: 5px; }
+    @media (max-width: 450px) {
+      .header .menu-items {
+        left: 1.5rem;
+        z-index: 10; } }
     .header .menu-items .cancel {
       width: 1.5rem;
       height: 1.5rem;
@@ -426,10 +430,28 @@ body {
     @media (max-width: 340px) {
       .header .header-greeting {
         margin-top: 8rem; } }
-  .header .add-container {
+  .header .add-master {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 2rem;
-    right: 7rem;
+    right: 7rem; }
+    @media (max-width: 680px) {
+      .header .add-master {
+        right: 3rem; } }
+    @media (max-width: 500px) {
+      .header .add-master {
+        right: 2rem;
+        top: 1.2rem;
+        transform: scale(0.9); } }
+    @media (max-width: 405px) {
+      .header .add-master {
+        right: 1rem;
+        top: 1rem;
+        transform: scale(0.7); } }
+  .header .add-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -443,22 +465,11 @@ body {
       border: 1px dashed white; }
       .header .add-container:hover .add-logo, .header .add-container:focus .add-logo, .header .add-container:active .add-logo {
         color: white; }
-    @media (max-width: 560px) {
-      .header .add-container {
-        right: 4rem; } }
-    @media (max-width: 450px) {
-      .header .add-container {
-        width: 4rem;
-        height: 4rem;
-        top: 1rem; } }
     .header .add-container .add-logo {
       width: 1.5rem;
       height: 1.5rem;
       color: rgba(0, 3, 155, 0.7); }
   .header .add-label {
-    position: absolute;
-    top: 6.7rem;
-    right: 5.5rem;
     color: white; }
     @media (max-width: 560px) {
       .header .add-label {

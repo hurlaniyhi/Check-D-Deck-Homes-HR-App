@@ -64,11 +64,12 @@ const AdminDashboard = () => {
                     <a href="/admin/dept" class="item-button">All files</a>
                     <a class="item-button" onClick={()=>logOut()}>LogOut</a>
                 </div>
-
-                <a class="add-container" href="">
-                    <FaPlus class="add-logo" />
-                </a>
-                <p class="add-label">Add new staff ?</p>
+                <div class="add-master">
+                    <a class="add-container" href="">
+                        <FaPlus class="add-logo" />
+                    </a>
+                    <p class="add-label">Add new staff ?</p>
+                </div>
                 <p class="header-greeting">Hello, We are Admin</p>
                 <div class="broadcast">
                     <FaEnvelope class="broadcast-icon" />
