@@ -1,3 +1,5 @@
+$color: blue;
+
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
       @media (max-width: 37.5em) {
@@ -444,3 +446,408 @@ body{
     width: 10rem;
     margin-bottom: 6rem;
 }
+
+
+// ADMIN DASHBOARD
+
+.title-bar{
+  height: 5rem;
+  background-color: #FAFAFA;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  
+    .logout-icon{
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      top: 50%;
+      right: 5rem;
+      transform: translateY(-50%);
+      color: rgba(0, 0, 0, .6);
+
+
+      @media (max-width: 580px){
+       display: none;
+      }
+
+        &:hover{
+          color: rgba(#00039B, .7);
+        }
+    }
+
+    
+
+    .menu-container{
+      position: absolute;
+      top: 50%;
+      left: 12rem;
+      font-size: 1.8rem;
+      font-weight: 400;
+      transform: translateY(-50%);
+
+      @media (max-width: 450px){
+        left: 1.5rem
+      }
+
+
+      .bar-menu{
+        padding: 1rem;
+        background-color: rgba(235, 235, 235, .6);
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover, &:focus, &:active {
+          background-color: rgba(230, 230, 230, 1);
+        }
+      }
+    }
+
+    
+
+    .bar-user{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @media (max-width: 580px){
+        right: 2rem;
+        transform: translateY(-50%);
+      }
+
+      @media (max-width: 450px){
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      @media (max-width: 315px){
+        display: none;
+      }
+
+
+      .bar-image{
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 50%;
+
+        @media (max-width: 408px){
+          display: none;
+        }
+      }
+
+      .bar-username{
+        font-size: 1.7rem;
+        padding-left: 2rem;
+        color: rgba(0, 0, 0, .6)
+      }
+
+    }
+
+    .logo-bar{
+      height: 4rem;
+      width: 6rem;
+      position: absolute;
+      top: 50%;
+      left: 3rem;
+      transform: translateY(-50%);
+
+      @media (max-width: 450px){
+        top: 50%;
+        left: 85%;
+        transform: translateY(-50%);
+      }
+    }
+
+}
+
+// HEADER
+
+.header{
+  height: 25rem;
+  margin-top: 5rem;
+  background-image: linear-gradient(
+      to right,
+      rgba(#0A1549, .75),
+      rgba(#04365F, .9)
+    ),
+    url("../assets/admin-image2.jpg");
+
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+
+  @media (max-width: 380px){
+    justify-content: flex-start;
+  }
+  
+  .menu-items{
+    position: fixed;
+    top: 5rem;
+    left: 12rem;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    padding: 3rem 0 1rem 0;
+    background-color: #eee;
+    border-radius: 5px;
+
+    .cancel{
+      width: 1.5rem;
+      height: 1.5rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: red;
+
+      &:hover {
+        color: rgba(#00039B, .8)
+      }
+    }
+
+    .item-button {
+      padding: .3rem 2rem;
+      width: 18rem;
+      margin: 0 auto;
+      cursor: pointer;
+      //border-radius: 5px;
+      font-size: 1.5rem;
+      transition: background-Image .7s;
+      background: rgba(230, 230, 230, .8);
+      text-decoration: none;
+      color: black;
+      
+      
+      &:not(:last-child){
+        margin-bottom: .2rem;
+      }
+
+      &:hover, &:focus, &:active {
+        background: linear-gradient(to right, rgba(#00039B, .7), rgba(#00039B, .6), rgba(#00039B, .9));
+        color: white
+      }
+    }
+  }
+
+    .header-greeting{
+      font-size: 3rem;
+      font-weight: 600;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: center;
+      margin-top: 7.5rem;
+      color: white;
+
+      @media (max-width: 450px){
+       font-size: 2.5rem;
+       font-weight: 600;
+      }
+
+      @media (max-width: 380px){
+        margin-left: 3rem;
+       }
+
+       @media (max-width: 340px){
+        margin-top: 8rem;
+       }
+    }
+
+    .add-container{
+      position: absolute;
+      top: 2rem;
+      right: 7rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background-color: #fff;
+
+        &:hover, &:focus, &:active {
+          background-color: rgba(purple, .2);
+          border: 1px dashed white;
+          
+          .add-logo{
+            color: white
+          }
+        }
+
+        @media (max-width: 560px){
+          
+          right: 4rem;
+        }
+
+
+        @media (max-width: 450px){
+          width: 4rem;
+          height: 4rem;
+          top: 1rem
+        }
+
+        .add-logo{
+          width: 1.5rem;
+          height: 1.5rem;
+          color: rgba(#00039B, .7)
+        }
+
+       
+    }
+
+    .add-label{
+      position: absolute;
+      top: 6.7rem;
+      right: 5.5rem;
+      color: white;
+
+      @media (max-width: 560px){
+        right: 2rem;
+      }
+
+      @media (max-width: 450px){
+        top: 4.7rem;
+        right: 2rem;
+        font-size: .7rem;
+      }
+
+    }
+}
+
+.broadcast{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 1rem 1.8rem;
+  background-color: white;
+  border-radius: 10px;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+    &:hover{
+      background-color: rgba(purple, .2);
+      border: 1px dashed white;
+
+      .broadcast-icon{
+        color: white
+      }
+
+      .broadcast-text{
+        &:link, &:visited{
+          color: white;
+        }
+        
+      }
+
+    }
+
+    .broadcast-icon{
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+      color: rgba(#00039B, .7);
+
+      
+    }
+
+    .broadcast-text{
+      &, &:link, &:visited{
+        text-decoration: none;
+        color: rgba(#00039B, .7);
+        font-size: 1.4rem;
+        font-weight: 600;
+
+        @media (max-width: 317px){
+          font-size: 1.2rem;
+        }
+      }
+    }
+}
+
+
+/*
+    ********* CONTENT *************
+*/
+
+.content-view{
+  padding: 7rem 2rem;
+}
+
+// ADMIN HOME
+
+.admin-home-container{
+
+}
+
+.card-title-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card-title{
+  font-size: 2rem;
+  font-weight: 600;
+  padding-left: 2.5rem;
+  padding-right: .5rem;
+  
+
+}
+
+.access-icon{
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+
+    &:last-child{
+      margin-left: -.5rem
+    }
+}
+
+.home-cards{
+  display: flex;
+  flex-direction: row;
+  //justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card{
+  flex-grow: 1;
+  flex-basis: 15rem;
+  text-align: center;
+  padding: 4.5rem;
+  border-radius: 5px;
+  margin: 2rem 1rem;
+  background: linear-gradient(to bottom right, rgba(#0A1549, .8),rgba(#04365F, 1));
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+
+    &:hover{
+      background: linear-gradient(to bottom right, rgba(190, 190, 190, .8),rgba(200, 200, 200, 1));
+
+      .card-content{
+        color: rgba(#00039B, .7)
+      }
+    }
+
+    .card-content{
+      font-size: 2.2rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: white;
+    }
+}
+

@@ -3,11 +3,8 @@ import React from 'react'
 
 const Department = () => {
     return(
-        <div>
-            <p>HR Department</p>
-            <p>HR Department</p>
-            <p>HR Department</p>
-            <p>HR Department</p>
+        <div style={{marginTop: "7rem"}}>
+            <p style={{fontSize: "3rem", textAlign: "center", fontWeight: "bold"}}>Work in Progress...</p>
         </div>
     )
 }
