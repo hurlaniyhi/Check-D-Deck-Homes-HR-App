@@ -390,7 +390,8 @@ body {
     opacity: 0;
     padding: 3rem 0 1rem 0;
     background-color: #eee;
-    border-radius: 5px; }
+    border-radius: 5px;
+    box-shadow: 1rem 2.5rem 3rem rgba(0, 0, 0, 0.3); }
     @media (max-width: 450px) {
       .header .menu-items {
         left: 1.5rem;
@@ -534,13 +535,14 @@ body {
     ********* CONTENT *************
 */
 .content-view {
-  padding: 7rem 2rem; }
+  padding: 1rem 2rem; }
 
 .card-title-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center; }
+  align-items: center;
+  margin-top: 3rem; }
 
 .card-title {
   font-size: 2rem;
@@ -581,3 +583,128 @@ body {
     font-weight: 500;
     cursor: pointer;
     color: white; }
+
+.depts-container {
+  margin: 0 auto;
+  width: 70%;
+  padding: 1rem 2rem 3rem 2rem; }
+  @media (max-width: 500px) {
+    .depts-container {
+      width: 80%; } }
+  @media (max-width: 450px) {
+    .depts-container {
+      width: 85%; } }
+  @media (max-width: 320px) {
+    .depts-container {
+      width: 90%; } }
+
+.dept {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  border-radius: 10px;
+  z-index: -1; }
+  .dept:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.dept1 {
+  background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.6), rgba(4, 54, 95, 0.95)), url("../assets/hr3.jpg");
+  background-size: cover;
+  background-position: 2%;
+  transition: all .2s;
+  position: relative; }
+  .dept1:hover, .dept1:focus {
+    background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.85), #04365f), url("../assets/hr3.jpg"); }
+    .dept1:hover .dept-text, .dept1:focus .dept-text {
+      transform: scale(0.9);
+      letter-spacing: 1px; }
+    .dept1:hover .dept-staff, .dept1:focus .dept-staff {
+      transform: scale(0.85); }
+
+.dept2 {
+  background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.6), rgba(4, 54, 95, 0.95)), url("../assets/marketing.jpg");
+  background-size: cover;
+  background-position: 2%;
+  transition: all .2s;
+  position: relative; }
+  .dept2:hover, .dept2:focus {
+    background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.85), #04365f), url("../assets/marketing3.jpg"); }
+    .dept2:hover .dept-text, .dept2:focus .dept-text {
+      transform: scale(0.9);
+      letter-spacing: 1px; }
+    .dept2:hover .dept-staff, .dept2:focus .dept-staff {
+      transform: scale(0.85); }
+
+.dept3 {
+  background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.6), rgba(4, 54, 95, 0.95)), url("../assets/sales.jpg");
+  background-size: cover;
+  background-position: 2%;
+  position: relative;
+  transition: all .2s; }
+  .dept3:hover, .dept3:focus {
+    background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.85), #04365f), url("../assets/sales.jpg"); }
+    .dept3:hover .dept-text, .dept3:focus .dept-text {
+      transform: scale(0.9);
+      letter-spacing: 1px; }
+    .dept3:hover .dept-staff, .dept3:focus .dept-staff {
+      transform: scale(0.85); }
+
+.dept4 {
+  background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.6), rgba(4, 54, 95, 0.95)), url("../assets/account.jpg");
+  background-size: cover;
+  background-position: 2%;
+  position: relative;
+  transition: all .2s; }
+  .dept4:hover, .dept4:focus {
+    background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.85), #04365f), url("../assets/account.jpg"); }
+    .dept4:hover .dept-text, .dept4:focus .dept-text {
+      transform: scale(0.9);
+      letter-spacing: 1px; }
+    .dept4:hover .dept-staff, .dept4:focus .dept-staff {
+      transform: scale(0.85); }
+
+.dept5 {
+  background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.6), rgba(4, 54, 95, 0.95)), url("../assets/site.jpg");
+  background-size: cover;
+  background-position: 2%;
+  position: relative;
+  transition: all .2s; }
+  .dept5:hover, .dept5:focus {
+    background-image: linear-gradient(to bottom, rgba(4, 54, 95, 0.85), #04365f), url("../assets/site.jpg"); }
+    .dept5:hover .dept-text, .dept5:focus .dept-text {
+      transform: scale(0.9);
+      letter-spacing: 1px; }
+    .dept5:hover .dept-staff, .dept5:focus .dept-staff {
+      transform: scale(0.85); }
+
+.dept-text {
+  color: white;
+  font-size: 2.7rem;
+  font-weight: 800;
+  transition: all .5s;
+  letter-spacing: 3px;
+  cursor: pointer; }
+
+.dept-topic {
+  margin-bottom: 1.2rem; }
+
+.dept-staff {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: .5rem;
+  right: 3rem;
+  transition: all .5s; }
+  .dept-staff .staff-icon {
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    margin-right: 1rem;
+    vertical-align: middle; }
+  .dept-staff .staff-no {
+    color: white;
+    font-size: 1.7rem;
+    font-weight: 600; }

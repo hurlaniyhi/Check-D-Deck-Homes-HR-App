@@ -605,6 +605,7 @@ body{
     padding: 3rem 0 1rem 0;
     background-color: #eee;
     border-radius: 5px;
+    box-shadow: 1rem 2.5rem 3rem rgba(0, 0, 0, 0.3);
    
 
     @media (max-width: 450px){
@@ -819,7 +820,7 @@ body{
 */
 
 .content-view{
-  padding: 7rem 2rem;
+  padding: 1rem 2rem;
 }
 
 // ADMIN HOME
@@ -833,6 +834,7 @@ body{
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 3rem;
 }
 
 .card-title{
@@ -890,3 +892,199 @@ body{
     }
 }
 
+
+// DEPARTMENTS
+
+.depts-container{
+  margin: 0 auto;
+  width: 70%;
+  padding: 1rem 2rem 3rem 2rem;
+
+  @media (max-width: 500px){
+    width: 80%
+  }
+
+  @media (max-width: 450px){
+    width: 85%
+  }
+
+  @media (max-width: 320px){
+    width: 90%
+  }
+  
+}
+
+.dept{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  border-radius: 10px;
+  z-index: -1;
+
+    &:not(:last-child){
+      margin-bottom: 3rem;
+    }
+    &:hover, &:focus{
+      
+    }
+}
+
+.dept1{
+  background-image: linear-gradient(to bottom, rgba(#04365F, .6),
+                    rgba(#04365F, .95)), 
+                    url("../assets/hr3.jpg");
+  background-size: cover;
+  background-position: 2%;
+  transition: all .2s;
+  position: relative;
+
+  &:hover, &:focus{
+    background-image: linear-gradient(to bottom, rgba(#04365F, .85),
+                      rgba(#04365F, 1)), 
+                      url("../assets/hr3.jpg");
+    .dept-text{
+      transform: scale(.9);
+      letter-spacing: 1px;
+    }
+
+    .dept-staff{
+      transform: scale(.85);
+    }
+  }
+}
+
+.dept2{
+  background-image: linear-gradient(to bottom, rgba(#04365F, .6),
+                    rgba(#04365F, .95)), 
+                    url("../assets/marketing.jpg");
+  background-size: cover;
+  background-position: 2%;
+  transition: all .2s;
+  position: relative;
+
+  &:hover, &:focus{
+    background-image: linear-gradient(to bottom, rgba(#04365F, .85),
+                      rgba(#04365F, 1)), 
+                      url("../assets/marketing3.jpg");
+    .dept-text{
+      transform: scale(.9);
+      letter-spacing: 1px;
+    }
+
+    .dept-staff{
+      transform: scale(.85);
+    }
+  }
+}
+
+.dept3{
+  background-image: linear-gradient(to bottom, rgba(#04365F, .6),
+                    rgba(#04365F, .95)), 
+                    url("../assets/sales.jpg");
+  background-size: cover;
+  background-position: 2%;
+  position: relative;
+  transition: all .2s;
+
+  &:hover, &:focus{
+    background-image: linear-gradient(to bottom, rgba(#04365F, .85),
+                      rgba(#04365F, 1)), 
+                      url("../assets/sales.jpg");
+    .dept-text{
+      transform: scale(.9);
+      letter-spacing: 1px;
+    }
+
+    .dept-staff{
+      transform: scale(.85);
+    }
+  }
+}
+
+
+.dept4{
+  background-image: linear-gradient(to bottom, rgba(#04365F, .6),
+                    rgba(#04365F, .95)), 
+                    url("../assets/account.jpg");
+  background-size: cover;
+  background-position: 2%;
+  position: relative;
+  transition: all .2s;
+
+  &:hover, &:focus{
+    background-image: linear-gradient(to bottom, rgba(#04365F, .85),
+                      rgba(#04365F, 1)), 
+                      url("../assets/account.jpg");
+    .dept-text{
+      transform: scale(.9);
+      letter-spacing: 1px;
+    }
+
+    .dept-staff{
+      transform: scale(.85);
+    }
+  }
+}
+
+.dept5{
+  background-image: linear-gradient(to bottom, rgba(#04365F, .6),
+                    rgba(#04365F, .95)), 
+                    url("../assets/site.jpg");
+  background-size: cover;
+  background-position: 2%;
+  position: relative;
+  transition: all .2s;
+
+  &:hover, &:focus{
+    background-image: linear-gradient(to bottom, rgba(#04365F, .85),
+                      rgba(#04365F, 1)), 
+                      url("../assets/site.jpg");
+    .dept-text{
+      transform: scale(.9);
+      letter-spacing: 1px;
+    }
+
+    .dept-staff{
+      transform: scale(.85);
+    }
+  }
+}
+
+.dept-text{
+  color: white;
+  font-size: 2.7rem;
+  font-weight: 800;
+  transition: all .5s;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+.dept-topic{
+   margin-bottom: 1.2rem; 
+}
+
+.dept-staff{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: .5rem;
+  right: 3rem;
+  transition: all .5s;
+
+    .staff-icon{
+      width: 2rem;
+      height: 2rem;
+      color: white;
+      margin-right: 1rem;
+      vertical-align: middle;
+    }
+
+    .staff-no{
+      color: white;
+      font-size: 1.7rem;
+      font-weight: 600;
+    }
+}

@@ -16,15 +16,15 @@ const Home = () => {
 
     return(
         <div id="container">
-            <img class="logo" src={logo} />
-            <div class="about">
-                <h1 class="greeting">Welcome to CheckD'Deck Homes</h1>
-                <p class="sales">We sell all properties you have in mind to buy.</p>
-                <p class="sales-plus">Land, Buildings, and other properties</p>
+            <img className="logo" src={logo} />
+            <div className="about">
+                <h1 className="greeting">Welcome to CheckD'Deck Homes</h1>
+                <p className="sales">We sell all properties you have in mind to buy.</p>
+                <p className="sales-plus">Land, Buildings, and other properties</p>
             </div>
-            <div class="navigate">
-                    <a class="nav1" onClick={()=> Login("Admin")}>Get started as Admin</a>
-                    <a class="nav1" onClick={()=> Login("Staff")}>Get started Staff</a>
+            <div className="navigate">
+                    <a className="nav1" onClick={()=> Login("Admin")}>Get started as Admin</a>
+                    <a className="nav1" onClick={()=> Login("Staff")}>Get started as Staff</a>
             </div>
         </div>
     )
