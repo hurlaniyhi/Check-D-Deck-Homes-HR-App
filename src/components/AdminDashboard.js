@@ -61,7 +61,7 @@ const AdminDashboard = () => {
                     <a className="item-button" onClick={()=>logOut()}>LogOut</a>
                 </div>
                 <div className="add-master">
-                    <Link className="add-container" to="/admin/dept">
+                    <Link className="add-container" to="/admin/work">
                         <FaPlus className="add-logo" />
                     </Link>
                     <p className="add-label">Add new staff ?</p>
