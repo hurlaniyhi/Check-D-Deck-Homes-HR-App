@@ -11,6 +11,10 @@ const AdminHome = () => {
         history.push("/admin/dept")
     }
 
+    function staffList(){
+        history.push("/admin/stafflist")
+    }
+
     return(
         <div className="Admin-home-container">
             <div className="card-title-container">
@@ -22,7 +26,7 @@ const AdminHome = () => {
                <div onClick={()=>dept()} className="card">
                    <p className="card-content">Departments</p>
                </div>
-               <div className="card">
+               <div className="card" onClick={()=>staffList()}>
                    <p className="card-content">Our Staff</p>
                </div>
                <div className="card">

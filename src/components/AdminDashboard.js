@@ -7,6 +7,7 @@ import barLogo from '../assets/ourlogo.png'
 import Department from './Departments'
 import AdminHome from './AdminHome'
 import Progress from "./Progress"
+import Staff from './Staff'
 
 
 
@@ -54,6 +55,7 @@ const AdminDashboard = () => {
                     <FaTimes className="cancel" onClick={()=> openItem()} />
                     <Link to="/admin/home" onClick={()=> callme()} className="item-button">Home</Link>
                     <Link to="/admin/dept" onClick={()=> callme()} className="item-button">All departments</Link>
+                    <Link to="/admin/stafflist" onClick={()=> callme()} className="item-button">All staffs</Link>
                     <Link to="/admin/work" onClick={()=> callme()} className="item-button">Instalmental transaction</Link>
                     <Link to="/admin/work" onClick={()=> callme()} className="item-button">Add new staff</Link>
                     <Link to ="/admin/work" onClick={()=> callme()} className="item-button">Broadcast message</Link>
@@ -78,9 +80,10 @@ const AdminDashboard = () => {
             <div className="content-view">
             <Switch>
             <Route path="/admin/" exact component={AdminHome}></Route>
+            <Route path="/admin/home" component={AdminHome}></Route>
             <Route path="/admin/dept" component={Department}></Route>
             <Route path="/admin/work" component={Progress}></Route>
-            <Route path="/admin/home" component={AdminHome}></Route>
+            <Route path="/admin/stafflist" component={Staff}></Route>
             <Redirect from="/admin/:id" to="/admin/" />
             </Switch>
             </div>

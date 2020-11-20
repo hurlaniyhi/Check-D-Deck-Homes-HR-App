@@ -708,3 +708,92 @@ body {
     color: white;
     font-size: 1.7rem;
     font-weight: 600; }
+
+.staff-container {
+  margin: 0 auto;
+  width: 65%;
+  padding: 1rem 2rem 3rem 2rem; }
+  @media (max-width: 840px) {
+    .staff-container {
+      width: 80%; } }
+  @media (max-width: 510px) {
+    .staff-container {
+      width: 90%; } }
+  @media (max-width: 450px) {
+    .staff-container {
+      width: 95%; } }
+  @media (max-width: 330px) {
+    .staff-container {
+      width: 98%; } }
+
+.staff {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; }
+  .staff:not(:last-child) {
+    margin-bottom: 2rem; }
+
+.staff-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  flex: 9;
+  background-color: rgba(230, 230, 230, 0.2);
+  border-radius: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all .5s; }
+  .staff-card:hover, .staff-card:focus {
+    background-color: rgba(230, 230, 230, 0.6); }
+    .staff-card:hover .staff-image, .staff-card:focus .staff-image {
+      transform: scale(1.2); }
+    .staff-card:hover .staff-name, .staff-card:focus .staff-name {
+      transform: scale(0.85);
+      color: black; }
+  .staff-card .staff-image {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    margin-right: 7rem;
+    transition: all .5s; }
+    @media (max-width: 570px) {
+      .staff-card .staff-image {
+        margin-right: 4rem; } }
+    @media (max-width: 380px) {
+      .staff-card .staff-image {
+        margin-right: 2rem; } }
+  .staff-card .staff-name {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+    transition: all .5s; }
+  .staff-card .staff-dept {
+    position: absolute;
+    bottom: .6rem;
+    right: 3rem; }
+
+.fire-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s; }
+
+.fire-staff {
+  width: 3rem;
+  height: 3rem;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all .5s; }
+  .fire-staff:hover {
+    color: red; }
+    .fire-staff:hover ~ .fire-text {
+      display: block; }
+
+.fire-text {
+  display: none;
+  transition: all .5s; }

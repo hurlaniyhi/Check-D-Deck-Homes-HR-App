@@ -8,7 +8,7 @@ const Department = () => {
     const history = useHistory()
 
     function work(){
-        history.push("/admin/work")
+        history.push("/admin/stafflist")
     }
 
     return(
