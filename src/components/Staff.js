@@ -84,6 +84,42 @@ const Staff = () => {
                         <p className="fire-text">Fire Staff ?</p>
                     </div>
                 </div>
+
+                <div className="staff">
+                    <div className="staff-card" onClick={()=>work()}>
+                        <img src={staffImage} className="staff-image" />
+                        <p className="staff-name">Rancho Aliyy</p>
+                        <p className="staff-dept">Marketing dept.</p>
+                    </div>
+                    <div className="fire-box">
+                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
+                        <p className="fire-text">Fire Staff ?</p>
+                    </div>
+                </div>
+
+                <div className="staff">
+                    <div className="staff-card" onClick={()=>work()}>
+                        <img src={staffImage} className="staff-image" />
+                        <p className="staff-name">Mohammed Bello</p>
+                        <p className="staff-dept">Sales dept.</p>
+                    </div>
+                    <div className="fire-box">
+                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
+                        <p className="fire-text">Fire Staff ?</p>
+                    </div>
+                </div>
+
+                <div className="staff">
+                    <div className="staff-card" onClick={()=>work()}>
+                        <img src={staffImage} className="staff-image" />
+                        <p className="staff-name">Khaleel Dalegan</p>
+                        <p className="staff-dept">Site Inspection dept.</p>
+                    </div>
+                    <div className="fire-box">
+                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
+                        <p className="fire-text">Fire Staff ?</p>
+                    </div>
+                </div>
         </div>
     )
 }

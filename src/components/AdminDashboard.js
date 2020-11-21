@@ -8,6 +8,9 @@ import Department from './Departments'
 import AdminHome from './AdminHome'
 import Progress from "./Progress"
 import Staff from './Staff'
+import AddStaff from './AddStaff'
+import Email from './Email'
+import Broadcast from './BroadcastMail'
 
 
 
@@ -15,8 +18,16 @@ const AdminDashboard = () => {
 
     const history = useHistory()
 
-    function logOut(){   
-        history.push("/")
+    function logOut(info){  
+        if(info){
+            if(window.confirm("Are you sure you want to log out ?")){
+                history.push("/")
+            }
+        }
+        else{
+            history.push("/")
+        } 
+        
     }
 
     function callme(){
@@ -39,7 +50,7 @@ const AdminDashboard = () => {
        
         <Router>
             <div className="title-bar">
-                <FaSignOutAlt className="logout-icon" onClick={()=>logOut()} />
+                <FaSignOutAlt className="logout-icon" onClick={()=>logOut("ask")} />
                 {/* <input type="checkbox" className="checkme" id="show-menu" /> */}
                 <div className="menu-container" onClick={()=> openItem()}><p className="bar-menu">Menu-items</p></div>
                 
@@ -56,14 +67,15 @@ const AdminDashboard = () => {
                     <Link to="/admin/home" onClick={()=> callme()} className="item-button">Home</Link>
                     <Link to="/admin/dept" onClick={()=> callme()} className="item-button">All departments</Link>
                     <Link to="/admin/stafflist" onClick={()=> callme()} className="item-button">All staffs</Link>
+                    <Link to="/admin/addstaff" onClick={()=> callme()} className="item-button">Add new staff</Link>
+                    <Link to="/admin/email_query" onClick={()=> callme()} className="item-button">Email/Query Staff</Link>
+                    <Link to ="/admin/broadcastmail" onClick={()=> callme()} className="item-button">Broadcast message</Link>
                     <Link to="/admin/work" onClick={()=> callme()} className="item-button">Instalmental transaction</Link>
-                    <Link to="/admin/work" onClick={()=> callme()} className="item-button">Add new staff</Link>
-                    <Link to ="/admin/work" onClick={()=> callme()} className="item-button">Broadcast message</Link>
                     <Link to="/admin/work" onClick={()=> callme()} className="item-button">All files</Link>
                     <a className="item-button" onClick={()=>logOut()}>LogOut</a>
                 </div>
                 <div className="add-master">
-                    <Link className="add-container" to="/admin/work">
+                    <Link className="add-container" to="/admin/addstaff">
                         <FaPlus className="add-logo" />
                     </Link>
                     <p className="add-label">Add new staff ?</p>
@@ -71,7 +83,7 @@ const AdminDashboard = () => {
                 <p className="header-greeting">Hello, We are Admin</p>
                 <div className="broadcast">
                     <FaEnvelope className="broadcast-icon" />
-                    <Link to="/admin/dept" className="broadcast-text">Send Broadcast Mail</Link>
+                    <Link to="/admin/broadcastmail" className="broadcast-text">Send Broadcast Mail</Link>
                 </div>
             </div>
 
@@ -84,6 +96,9 @@ const AdminDashboard = () => {
             <Route path="/admin/dept" component={Department}></Route>
             <Route path="/admin/work" component={Progress}></Route>
             <Route path="/admin/stafflist" component={Staff}></Route>
+            <Route path="/admin/addstaff" component={AddStaff}></Route>
+            <Route path="/admin/email_query" component={Email}></Route>
+            <Route path="/admin/broadcastmail" component={Broadcast}></Route>
             <Redirect from="/admin/:id" to="/admin/" />
             </Switch>
             </div>

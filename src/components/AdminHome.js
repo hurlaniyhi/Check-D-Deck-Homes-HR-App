@@ -7,12 +7,16 @@ const AdminHome = () => {
 
     const history = useHistory()
 
-    function dept(){
-        history.push("/admin/dept")
+    function dept(nav){
+        history.push(`/admin/${nav}`)
     }
 
     function staffList(){
         history.push("/admin/stafflist")
+    }
+
+    function Email(){
+        history.push("/admin/email_query")
     }
 
     return(
@@ -23,16 +27,19 @@ const AdminHome = () => {
                 <FaAngleDoubleRight className="access-icon"/>
             </div>
            <div className="home-cards">
-               <div onClick={()=>dept()} className="card">
+               <div className="card" onClick={()=>dept("dept")}>
                    <p className="card-content">Departments</p>
                </div>
                <div className="card" onClick={()=>staffList()}>
                    <p className="card-content">Our Staff</p>
                </div>
-               <div className="card">
+               <div className="card" onClick={()=>dept("work")}>
                    <p className="card-content">All Documents</p>
                </div>
-               <div className="card">
+               <div className="card" onClick={()=>Email()}>
+                   <p className="card-content">Query/Email Staff</p>
+               </div>
+               <div className="card" onClick={()=>dept("work")}>
                    <p className="card-content">Activities</p>
                </div>
                <div className="card">
@@ -42,8 +49,9 @@ const AdminHome = () => {
                    <p className="card-content">Time Off Requests</p>
                </div>
                <div className="card">
-                   <p className="card-content">Query/Email Staff</p>
+                   <p className="card-content">Cash Analysis</p>
                </div>
+              
            </div>
         </div>
     )
