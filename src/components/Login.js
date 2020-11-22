@@ -40,7 +40,7 @@ const Login = () => {
                 <div class="icon-container"><FaLock class="user-icon"/></div>
                     <input class="user-input" type="password" placeholder="Enter Password" onClick={()=>changeColor("#input2")} onBlur={()=>reverseColor("#input2")} required/>
                 </div>
-                <a class="login-button" onClick={()=> signIn()} >Login</a>
+                <div class="login-button" onClick={()=> signIn()} >Login</div>
             </div>
         </div>
     )

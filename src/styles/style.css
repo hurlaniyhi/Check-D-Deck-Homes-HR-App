@@ -97,7 +97,7 @@ body {
     opacity: 1;
     color: purple; } }
 
-#container {
+#main-container {
   background-image: linear-gradient(to right, rgba(2, 0, 37, 0.9), rgba(0, 1, 0, 0.9)), url("../assets/backImage.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -133,23 +133,23 @@ body {
   font-size: 1.6rem;
   animation: moveInRight 2s ease-out; }
 
-.navigate {
+.navigate-us {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   margin-top: 25vh; }
   @media (max-width: 500px) {
-    .navigate {
+    .navigate-us {
       flex-direction: column;
       margin-top: 18vh; } }
   @media (max-width: 320px) {
-    .navigate {
+    .navigate-us {
       margin-top: 10vh; } }
 
 .nav1 {
   padding: 2.4rem 2.2rem;
-  width: 20rem;
+  width: 25rem;
   background-image: linear-gradient(to right, rgba(0, 3, 155, 0.9), rgba(0, 3, 155, 0.5));
   text-align: center;
   text-decoration: none;
@@ -309,7 +309,6 @@ body {
     left: 12rem;
     font-size: 1.8rem;
     font-weight: 400;
-    transform: translateY(-50%);
     text-decoration: none;
     outline: none;
     transition: all .3s; }
@@ -326,6 +325,18 @@ body {
       .title-bar .menu-container .bar-menu:hover, .title-bar .menu-container .bar-menu:focus, .title-bar .menu-container .bar-menu:active {
         background-color: #e6e6e6;
         outline: none; }
+  .title-bar #menu-items {
+    box-shadow: 1rem 2.5rem 3rem rgba(0, 0, 0, 0.3);
+    margin-top: -0.8rem;
+    border-radius: 5px; }
+    .title-bar #menu-items .item-button {
+      font-size: 1.5rem;
+      outline: none;
+      transition: all .3s;
+      cursor: pointer; }
+      .title-bar #menu-items .item-button:hover, .title-bar #menu-items .item-button:focus, .title-bar #menu-items .item-button:active {
+        background: linear-gradient(to right, rgba(0, 3, 155, 0.7), rgba(0, 3, 155, 0.6), rgba(0, 3, 155, 0.9));
+        color: white; }
   .title-bar .bar-user {
     display: flex;
     justify-content: center;
@@ -381,47 +392,6 @@ body {
   @media (max-width: 380px) {
     .header {
       justify-content: flex-start; } }
-  .header .menu-items {
-    position: fixed;
-    top: 5rem;
-    left: 12rem;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    padding: 3rem 0 1rem 0;
-    background-color: #eee;
-    border-radius: 5px;
-    box-shadow: 1rem 2.5rem 3rem rgba(0, 0, 0, 0.3);
-    z-index: 5; }
-    @media (max-width: 450px) {
-      .header .menu-items {
-        left: 1.5rem;
-        z-index: 10; } }
-    .header .menu-items .cancel {
-      width: 1.5rem;
-      height: 1.5rem;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      color: red; }
-      .header .menu-items .cancel:hover {
-        color: rgba(0, 3, 155, 0.8); }
-    .header .menu-items .item-button {
-      padding: .3rem 2rem;
-      width: 18rem;
-      margin: 0 auto;
-      cursor: pointer;
-      font-size: 1.5rem;
-      outline: none;
-      transition: background-Image .7s;
-      background: rgba(230, 230, 230, 0.8);
-      text-decoration: none;
-      color: black; }
-      .header .menu-items .item-button:not(:last-child) {
-        margin-bottom: .2rem; }
-      .header .menu-items .item-button:hover, .header .menu-items .item-button:focus, .header .menu-items .item-button:active {
-        background: linear-gradient(to right, rgba(0, 3, 155, 0.7), rgba(0, 3, 155, 0.6), rgba(0, 3, 155, 0.9));
-        color: white; }
   .header .header-greeting {
     font-size: 3rem;
     font-weight: 600;
@@ -556,7 +526,8 @@ body {
   height: 2rem;
   vertical-align: middle;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  margin-top: -.5rem; }
   .access-icon:last-child {
     margin-left: -.5rem; }
 
@@ -566,20 +537,24 @@ body {
   align-items: center;
   flex-wrap: wrap; }
 
-.card {
+.card-wide {
   flex-grow: 1;
-  flex-basis: 15rem;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 4.5rem;
+  height: 15rem;
+  width: 20rem;
   border-radius: 5px;
   margin: 2rem 1rem;
   background: linear-gradient(to bottom right, rgba(10, 21, 73, 0.8), #04365f);
   box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3); }
-  .card:hover {
+  .card-wide:hover {
     background: linear-gradient(to bottom right, rgba(190, 190, 190, 0.8), #c8c8c8); }
-    .card:hover .card-content {
+    .card-wide:hover .card-content {
       color: rgba(0, 3, 155, 0.7); }
-  .card .card-content {
+  .card-wide .card-content {
     font-size: 2.2rem;
     font-weight: 500;
     cursor: pointer;
@@ -937,3 +912,69 @@ body {
 
 .form-radio-input:checked ~ .form-radio-label .form-radio-button::after {
   opacity: 1; }
+
+.file-envelope {
+  margin: 0 auto;
+  padding: 2rem 3rem; }
+
+.file-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+
+.single-file {
+  height: 13rem;
+  width: 22rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  transition: all .3s;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem; }
+  .single-file:hover, .single-file:focus {
+    transform: scale(1.1);
+    background-color: rgba(230, 230, 230, 0.3);
+    z-index: 2; }
+  .single-file .file-description {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.5rem;
+    font-size: 1.2rem; }
+    .single-file .file-description .file-text {
+      cursor: pointer; }
+  .single-file .file-detail {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(230, 230, 230, 0.7);
+    transition: all .3s; }
+    .single-file .file-detail:hover, .single-file .file-detail:focus {
+      background-color: #e4e4e4; }
+    .single-file .file-detail .file-name {
+      font-size: 1.25rem;
+      margin-top: .6rem;
+      font-weight: 500;
+      cursor: pointer; }
+      .single-file .file-detail .file-name .file-icon {
+        width: 2rem;
+        height: 2rem;
+        vertical-align: middle;
+        color: red;
+        margin-right: 1rem; }
+    .single-file .file-detail .file-download {
+      width: 1.4rem;
+      height: 1.4rem;
+      margin-left: 2rem;
+      color: rgba(0, 0, 0, 0.6);
+      transition: all .2s; }
+      .single-file .file-detail .file-download:hover, .single-file .file-detail .file-download:focus {
+        color: #00039B; }

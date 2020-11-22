@@ -31,7 +31,7 @@ const Email = () => {
                     <textarea class="add-input text-area" placeholder="Email Content" required></textarea>
                 </div>
 
-                <a class="login-button" onClick={()=>test()}>Send Mail/Query</a>
+                <div class="login-button" onClick={()=>test()}>Send Mail/Query</div>
             </form>
         </div>
     )

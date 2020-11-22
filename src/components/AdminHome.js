@@ -27,28 +27,28 @@ const AdminHome = () => {
                 <FaAngleDoubleRight className="access-icon"/>
             </div>
            <div className="home-cards">
-               <div className="card" onClick={()=>dept("dept")}>
+               <div className="card-wide" onClick={()=>dept("dept")}>
                    <p className="card-content">Departments</p>
                </div>
-               <div className="card" onClick={()=>staffList()}>
+               <div className="card-wide" onClick={()=>staffList()}>
                    <p className="card-content">Our Staff</p>
                </div>
-               <div className="card" onClick={()=>dept("work")}>
+               <div className="card-wide" onClick={()=>dept("files")}>
                    <p className="card-content">All Documents</p>
                </div>
-               <div className="card" onClick={()=>Email()}>
+               <div className="card-wide" onClick={()=>Email()}>
                    <p className="card-content">Query/Email Staff</p>
                </div>
-               <div className="card" onClick={()=>dept("work")}>
+               <div className="card-wide" onClick={()=>dept("work")}>
                    <p className="card-content">Activities</p>
                </div>
-               <div className="card">
+               <div className="card-wide">
                    <p className="card-content">Meeting Reports</p>
                </div>
-               <div className="card">
+               <div className="card-wide">
                    <p className="card-content">Time Off Requests</p>
                </div>
-               <div className="card">
+               <div className="card-wide">
                    <p className="card-content">Cash Analysis</p>
                </div>
               

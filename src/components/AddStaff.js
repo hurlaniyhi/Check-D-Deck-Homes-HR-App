@@ -65,7 +65,7 @@ const AddStaff = () => {
                     </div>
                 </div>
 
-                <a class="login-button" onClick={()=> test()}>Add Staff</a>
+                <div class="login-button" onClick={()=> test()}>Add Staff</div>
             </form>
         </div>
     )

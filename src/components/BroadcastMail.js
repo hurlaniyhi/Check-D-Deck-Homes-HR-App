@@ -27,8 +27,9 @@ const Broadcast = () => {
                     <textarea class="add-input text-area" placeholder="Email Content" required></textarea>
                 </div>
 
-                <a class="login-button" onClick={()=> test()}>Send Message</a>
+                <div class="login-button" onClick={()=> test()}>Send Message</div>
             </form>
+
         </div>
     )
 }

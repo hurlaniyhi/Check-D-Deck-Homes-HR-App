@@ -11,6 +11,7 @@ import Staff from './Staff'
 import AddStaff from './AddStaff'
 import Email from './Email'
 import Broadcast from './BroadcastMail'
+import Files from './Files'
 
 
 
@@ -30,20 +31,6 @@ const AdminDashboard = () => {
         
     }
 
-    function callme(){
-        document.querySelector(".menu-items").style.opacity = 0 
-    }
-
-    function openItem(){
-        let swap = document.querySelector(".menu-items")
-         if(swap.style.opacity == 0){
-             swap.style.opacity = 1
-         }
-         else{
-             swap.style.opacity = 0
-         }
-    }
-
     document.body.style.background = '#F7FCFC'
 
     return(
@@ -52,7 +39,25 @@ const AdminDashboard = () => {
             <div className="title-bar">
                 <FaSignOutAlt className="logout-icon" onClick={()=>logOut("ask")} />
                 {/* <input type="checkbox" className="checkme" id="show-menu" /> */}
-                <div className="menu-container" onClick={()=> openItem()}><p className="bar-menu">Menu-items</p></div>
+                {/* <div className="menu-container" onClick={()=> openItem()}><p className="bar-menu">Menu-items</p></div> */}
+                
+                
+                <div class="dropdown">
+                    <div className="menu-container" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p className="bar-menu dropdown-toggle">Menu-items</p></div>
+                    <div class="dropdown-menu" id="menu-items" aria-labelledby="dropdownMenuButton">    
+                        <Link to="/admin/home"  className="item-button dropdown-item">Home</Link>
+                        <Link to="/admin/dept" className="item-button dropdown-item">All departments</Link>
+                        <Link to="/admin/stafflist" className="item-button dropdown-item">All staffs</Link>
+                        <Link to="/admin/addstaff" className="item-button dropdown-item">Add new staff</Link>
+                        <Link to="/admin/email_query" className="item-button dropdown-item">Email/Query Staff</Link>
+                        <Link to ="/admin/broadcastmail" className="item-button dropdown-item">Broadcast message</Link>
+                        <Link to="/admin/files" className="item-button dropdown-item">All files</Link>
+                        <Link to="/admin/work" className="item-button dropdown-item">Instalmental transaction</Link>
+                        <a className="item-button dropdown-item" onClick={()=>logOut()}>LogOut</a>
+                    </div>
+                </div>
+
+                
                 
                 <div className="bar-user">
                 <img src={barImage} className="bar-image" />
@@ -62,18 +67,6 @@ const AdminDashboard = () => {
             </div>
 
             <div className="header">
-            <div className="menu-items">
-                    <FaTimes className="cancel" onClick={()=> openItem()} />
-                    <Link to="/admin/home" onClick={()=> callme()} className="item-button">Home</Link>
-                    <Link to="/admin/dept" onClick={()=> callme()} className="item-button">All departments</Link>
-                    <Link to="/admin/stafflist" onClick={()=> callme()} className="item-button">All staffs</Link>
-                    <Link to="/admin/addstaff" onClick={()=> callme()} className="item-button">Add new staff</Link>
-                    <Link to="/admin/email_query" onClick={()=> callme()} className="item-button">Email/Query Staff</Link>
-                    <Link to ="/admin/broadcastmail" onClick={()=> callme()} className="item-button">Broadcast message</Link>
-                    <Link to="/admin/work" onClick={()=> callme()} className="item-button">Instalmental transaction</Link>
-                    <Link to="/admin/work" onClick={()=> callme()} className="item-button">All files</Link>
-                    <a className="item-button" onClick={()=>logOut()}>LogOut</a>
-                </div>
                 <div className="add-master">
                     <Link className="add-container" to="/admin/addstaff">
                         <FaPlus className="add-logo" />
@@ -99,6 +92,7 @@ const AdminDashboard = () => {
             <Route path="/admin/addstaff" component={AddStaff}></Route>
             <Route path="/admin/email_query" component={Email}></Route>
             <Route path="/admin/broadcastmail" component={Broadcast}></Route>
+            <Route path="/admin/files" component={Files}></Route>
             <Redirect from="/admin/:id" to="/admin/" />
             </Switch>
             </div>
