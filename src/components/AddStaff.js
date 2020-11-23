@@ -38,6 +38,24 @@ const AddStaff = () => {
 
                 <div class="add-form-group">
                     <select  class="add-input" required>
+                        <option>Gender</option>
+                        <option value="Human Resources">Male</option>
+                        <option value="Marketing">Female</option>
+                    </select>
+                </div>
+
+                <div class="add-form-group">
+                    <select  class="add-input" required>
+                        <option>Marital Status</option>
+                        <option value="Human Resources">Single</option>
+                        <option value="Marketing">Married</option>
+                        <option value="Marketing">Divorced</option>
+                        <option value="Marketing">Widow</option>
+                    </select>
+                </div>
+
+                <div class="add-form-group">
+                    <select  class="add-input" required>
                         <option>Choose Department</option>
                         <option value="Human Resources">Human Resources</option>
                         <option value="Marketing">Marketing</option>

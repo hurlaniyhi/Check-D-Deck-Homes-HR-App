@@ -8,9 +8,18 @@ const Login = () => {
 
     const history = useHistory()
 
-    function signIn(){
-        alert("you will be signed in wooooo!")
-        history.push("/admin")
+    const signIn = async() =>{
+        const getInfo = await localStorage.getItem("info")
+
+        if(getInfo === "Admin"){
+            alert("you will be signed in as Admin woooo!")
+            history.push("/admin")
+        }
+        else if(getInfo === "Staff"){
+            alert("you will be signed in as a Staff wooooo!")
+            history.push("/staff")
+        }
+        
     }
 
     function changeColor(id){

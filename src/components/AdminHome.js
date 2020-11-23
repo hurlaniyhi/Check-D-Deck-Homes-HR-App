@@ -39,6 +39,9 @@ const AdminHome = () => {
                <div className="card-wide" onClick={()=>Email()}>
                    <p className="card-content">Query/Email Staff</p>
                </div>
+               <div className="card-wide">
+                   <p className="card-content" onClick={()=>dept("changepassword")}>Change Password</p>
+               </div>
                <div className="card-wide" onClick={()=>dept("work")}>
                    <p className="card-content">Activities</p>
                </div>
@@ -47,9 +50,6 @@ const AdminHome = () => {
                </div>
                <div className="card-wide">
                    <p className="card-content">Time Off Requests</p>
-               </div>
-               <div className="card-wide">
-                   <p className="card-content">Cash Analysis</p>
                </div>
               
            </div>

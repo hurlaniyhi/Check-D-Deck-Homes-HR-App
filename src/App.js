@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-do
 import Home from './components/Homepage'
 import Login from './components/Login'
 import AdminDashboard from './components/AdminDashboard'
+import StaffDashboard from './components/StaffDashboard'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Route path="/" exact component={Home}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/admin" component={AdminDashboard}></Route>
+          <Route path="/staff" component={StaffDashboard}></Route>
           <Redirect from="/:id" to="/" />
           </Switch>
       </Router>
