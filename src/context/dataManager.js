@@ -169,6 +169,7 @@ export const StateProvider = (props) => {
             }
             else{
                 alert(response.data.message)
+                console.log(response.data.info)
             }
         }
         catch(err){
@@ -246,7 +247,7 @@ export const StateProvider = (props) => {
         
             await myAPI.get(`/file/${query}`)
                 .then(()=>{
-                    window.open(`http://localhost:5000/file/${query}`, '_blank')
+                    window.open(`https://staff-manager-server.herokuapp.com/file/${query}`, '_blank')
                 })
                 .catch((err)=>{
                     alert("No network connection")
