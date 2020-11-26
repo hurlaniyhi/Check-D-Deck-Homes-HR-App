@@ -11,8 +11,9 @@ const AdminHome = () => {
         history.push(`/admin/${nav}`)
     }
 
-    function staffList(){
-        history.push("/admin/stafflist")
+    async function staffList(key, value, route){
+        await localStorage.setItem(key, value)
+        history.push(`/admin/${route}`)
     }
 
     function Email(){
@@ -30,10 +31,10 @@ const AdminHome = () => {
                <div className="card-wide" onClick={()=>dept("dept")}>
                    <p className="card-content">Departments</p>
                </div>
-               <div className="card-wide" onClick={()=>staffList()}>
+               <div className="card-wide" onClick={()=>staffList("dept", "all", "stafflist")}>
                    <p className="card-content">Our Staff</p>
                </div>
-               <div className="card-wide" onClick={()=>dept("files")}>
+               <div className="card-wide" onClick={()=>staffList("fileViewer", "all", "files")}>
                    <p className="card-content">All Documents</p>
                </div>
                <div className="card-wide" onClick={()=>Email()}>

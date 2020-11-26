@@ -11,6 +11,11 @@ const StaffHome = () => {
         history.push(`/staff/${nav}`)
     }
 
+    async function uploaded(key, value, route){
+        await localStorage.setItem(key, value)
+        history.push(`/staff/${route}`)
+    }
+
     return(
         <div className="Admin-home-container">
             <div className="card-title-container">
@@ -22,7 +27,7 @@ const StaffHome = () => {
            <div className="card-wide" onClick={()=>info("uploadfile")}>
                    <p className="card-content">Upload New File</p>
                </div>
-               <div className="card-wide" onClick={()=>info("files")}>
+               <div className="card-wide" onClick={()=>uploaded("fileViewer", "staff", "files")}>
                    <p className="card-content">Uploaded Documents</p>
                </div>
                <div className="card-wide" onClick={()=>info("email_query")}>

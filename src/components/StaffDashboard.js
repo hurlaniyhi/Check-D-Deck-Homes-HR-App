@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useEffect, useContext, useState} from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
-import { FaSignOutAlt, FaCamera } from 'react-icons/fa'
+import { FaSignOutAlt, FaCamera, FaPencilAlt } from 'react-icons/fa'
 import barImage from '../assets/admin-image6.jpg'
 import barLogo from '../assets/ourlogo.png'
-import userImage from '../assets/dp3.jpg'
+import userImage2 from '../assets/userdp.jpg'
 import Progress from "./Progress"
 //import Staff from './Staff'
 import Email from './Email'
@@ -13,23 +13,64 @@ import Files from './Files'
 import StaffHome from './StaffHome'
 import ChangePassword from './ChangePassword'
 import UploadFile from './UploadFile'
+import DataManager from "../context/dataManager"
 
 
 
 const StaffDashboard = () => {
+
+    const {state, fetchUser, uploadDP} = useContext(DataManager)
+
+    const [preview, setPreview] = useState({image: null})
+
+    useEffect(()=>{
+        userInfo()
+    }, [])
+
+    const userInfo = async()=>{
+        var username = await localStorage.getItem("token")
+         
+        fetchUser()
+    }
+
+    const handleImage = async(e)=>{
+        setPreview({...preview, image: URL.createObjectURL(e.target.files[0])})
+        
+        document.querySelector("#both").style.display = "none"
+        document.querySelector("#both2").style.display = "none"
+        document.querySelector("#preview").style.display = "block"
+        document.querySelector("#preview2").style.display = "block"
+
+        const data = new FormData()
+        data.append('picture', e.target.files[0])
+
+        await uploadDP(data)
+
+        document.querySelector("#both").style.display = "block"
+        document.querySelector("#both2").style.display = "block"
+        document.querySelector("#preview").style.display = "none"
+        document.querySelector("#preview2").style.display = "none"
+        
+    }
 
     const history = useHistory()
 
     function logOut(info){  
         if(info){
             if(window.confirm("Are you sure you want to log out ?")){
+                localStorage.clear()
                 history.push("/")
             }
         }
         else{
+            localStorage.clear()
             history.push("/")
         } 
         
+    }
+
+    async function handleFetch(key, value){
+        await localStorage.setItem(key, value)
     }
 
     document.body.style.background = '#F7FCFC'
@@ -46,7 +87,7 @@ const StaffDashboard = () => {
                         <Link to="/staff/home"  className="item-button dropdown-item">Home</Link>
                         <Link to="/staff/uploadfile" className="item-button dropdown-item">Upload file</Link>
                         <Link to="/staff/email_query" className="item-button dropdown-item">Contact Other Staff</Link>
-                        <Link to="/staff/files" className="item-button dropdown-item">Uploaded files</Link>
+                        <Link to="/staff/files" onClick={()=>handleFetch("fileViewer", "staff")} className="item-button dropdown-item">Uploaded files</Link>
                         <Link to="/staff/broadcastmail" className="item-button dropdown-item">Contact Admin</Link>
                         <Link to="/staff/changepassword" className="item-button dropdown-item">Change password</Link>
                         <a className="item-button dropdown-item" onClick={()=>logOut()}>LogOut</a>
@@ -56,26 +97,39 @@ const StaffDashboard = () => {
                 
                 
                 <div className="bar-user">
-                <img src={userImage} className="bar-image" />
+                {/* <img src={userImage} className="bar-image" /> */}
+                {state.user.profilePicture ? <img src={state.user.profilePicture} className="bar-image" id="both" /> : 
+                <img src={userImage2} className="bar-image" id="both" />}
+                <img src={preview.image} className="bar-image" id="preview" style={{display: "none"}} />
                     <p className="bar-username">Staff Dashboard</p>
                 </div>
                 <Link to="/staff/home"><img className="logo-bar" src={barLogo}/></Link>
             </div>
 
             <div className="staff-header">
-                <img src={userImage} className="user-img" />
-                {/* <FaCamera className="take-pics" /> */}
+
+                {state.user.profilePicture ? <img src={state.user.profilePicture} className="user-img" id="both2" /> : 
+                <img src={userImage2} className="user-img" id="both2" />}
+                <img src={preview.image} className="user-img" id="preview2" style={{display: "none"}} />
+
+                <div className="mydp">
+                    <input type="file" onChange={handleImage} className="input-dp" id="dp" />
+                    <label className="dp-placeholder" for="dp">
+                        <p>Change Picture</p>
+                        <FaPencilAlt className="file-icon" />
+                        </label>
+                </div>
                 <div className="user-details">
-                    <p className="user-name">Kolawole Ridwan</p>
-                    <p className="user-infos">Human Resources Department</p>
-                    <p className="user-infos">olaniyi.jibola152@gmail.com</p>
-                    <p className="user-infos">No 2A, Kano street, Oyingbo, Lagos</p>
-                    <p className="user-infos">Male</p>
-                    <p className="user-infos">Single</p>
-                    <p className="user-infos">07087994127</p>
+                    <p className="user-name">{state.user.firstName} {state.user.lastName}</p>
+                    <p className="user-infos">{state.user.department} Department</p>
+                    <p className="user-infos">{state.user.email}</p>
+                    <p className="user-infos">{state.user.address}</p>
+                    <p className="user-infos">{state.user.gender}</p>
+                    <p className="user-infos">{state.user.maritalStatus}</p>
+                    <p className="user-infos">{state.user.phoneNumber}</p>
                 </div>
 
-                <p className="user-rank">Full Staff</p>
+                <p className="user-rank">{state.user.jobStatus}</p>
             </div>
 
         

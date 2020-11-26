@@ -1,125 +1,62 @@
-import React from 'react'
+import React, {useEffect, useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import { FaTrash, FaAngleRight } from 'react-icons/fa'
-import staffImage from "../assets/dp3.jpg"
+//import staffImage from "../assets/dp3.jpg"
+import userImage2 from '../assets/userdp.jpg'
+import DataManager from "../context/dataManager"
 
 
 
 const Staff = () => {
 
-    function fireStaff(){
-        if(window.confirm("Are you sure you want to fire this staff ?")){
-            alert("We are still working on the logic to delete staff profile")
-        }
-    }
+    const {state, fetchMembers, deleteStaff, fetchUser} = useContext(DataManager)
+
+    useEffect(()=>{
+        fetchMembers()
+    }, [])
+
 
     const history = useHistory()
 
-    function work(){
-        history.push("/admin/work")
+    async function fireStaff(id){
+        if(window.confirm("Are you sure you want to fire this staff ?")){
+            //alert("We are still working on the logic to delete staff profile")
+
+            await deleteStaff(id)
+            fetchMembers()
+        }
     }
+
+   async function work(user){
+        history.push("/admin/staffdetails")
+        fetchUser(user)
+    }
+
+    const members = state.members.map(member =>{
+        return(
+            <div className="staff">
+                <div className="staff-card" onClick={()=>work(member.username)}>
+                    {member.profilePicture ? <img src={member.profilePicture} className="staff-image" />:
+                     <img src={userImage2} className="staff-image" />}
+                    <p className="staff-name">{member.firstName} {member.lastName}</p>
+                    {member.department == "Human Resources" ? <p className="staff-dept">HR dept.</p>:
+                    <p className="staff-dept">{member.department} dept.</p>}
+                </div>
+                <div className="fire-box">
+                    <FaTrash className="fire-staff" onClick={()=> fireStaff(member._id)} />
+                    <p className="fire-text">Clear data ?</p>
+                </div>
+            </div>
+        )
+    })
 
     return(
         <div className="staff-container">
-                <div className="card-title-container dept-topic ">
-                    <p className="card-title staff-topc">Staff List</p>
-                    <FaAngleRight className="access-icon"/>   
-                </div>
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Ridwan Kolawole</p>
-                        <p className="staff-dept">HR dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()} />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
-
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Haleemah Olanrewaju</p>
-                        <p className="staff-dept">Sales dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
-
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Newton Vue</p>
-                        <p className="staff-dept">Marketing dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
-
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Olaniyi JIbola</p>
-                        <p className="staff-dept">Site Inspection dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
-
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Elelu Abdus-salam</p>
-                        <p className="staff-dept">HR dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
-
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Rancho Aliyy</p>
-                        <p className="staff-dept">Marketing dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
-
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Mohammed Bello</p>
-                        <p className="staff-dept">Sales dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
-
-                <div className="staff">
-                    <div className="staff-card" onClick={()=>work()}>
-                        <img src={staffImage} className="staff-image" />
-                        <p className="staff-name">Khaleel Dalegan</p>
-                        <p className="staff-dept">Site Inspection dept.</p>
-                    </div>
-                    <div className="fire-box">
-                        <FaTrash className="fire-staff" onClick={()=> fireStaff()}  />
-                        <p className="fire-text">Fire Staff ?</p>
-                    </div>
-                </div>
+            <div className="card-title-container dept-topic ">
+                <p className="card-title staff-topc">Staff List</p>
+                <FaAngleRight className="access-icon"/>   
+            </div>
+            {members}
         </div>
     )
 }

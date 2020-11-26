@@ -1,25 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import '../styles/style.css'
 import {FaUser, FaLock} from 'react-icons/fa'
 import logo from "../assets/ourlogo.png"
 import {useHistory} from 'react-router-dom'
+import DataManager from "../context/dataManager"
 
 const Login = () => {
 
+    const {state, signIn} = useContext(DataManager)
+    const [myInput, setMyInput] = useState({username: "", password: ""})
+
     const history = useHistory()
 
-    const signIn = async() =>{
-        const getInfo = await localStorage.getItem("info")
-
-        if(getInfo === "Admin"){
-            alert("you will be signed in as Admin woooo!")
-            history.push("/admin")
-        }
-        else if(getInfo === "Staff"){
-            alert("you will be signed in as a Staff wooooo!")
-            history.push("/staff")
-        }
-        
+    const handleChange = (e) => {
+        setMyInput({...myInput, [e.target.name]: e.target.value})
     }
 
     function changeColor(id){
@@ -42,14 +36,14 @@ const Login = () => {
                 <label class="label">Username</label>
                 <div class="cover-input" id="input1">
                     <div class="icon-container"><FaUser class="user-icon"/></div>
-                    <input class="user-input" onClick={()=>changeColor("#input1")} onBlur={()=>reverseColor("#input1")} type="text" placeholder="Enter username" required/>
+                    <input class="user-input" name="username" onChange={handleChange} onClick={()=>changeColor("#input1")} onBlur={()=>reverseColor("#input1")} type="text" placeholder="Enter username" required/>
                 </div>
                 <label class="label">Password</label>
                 <div class="cover-input" id="input2">
                 <div class="icon-container"><FaLock class="user-icon"/></div>
-                    <input class="user-input" type="password" placeholder="Enter Password" onClick={()=>changeColor("#input2")} onBlur={()=>reverseColor("#input2")} required/>
+                    <input class="user-input" name="password" onChange={handleChange} type="password" placeholder="Enter Password" onClick={()=>changeColor("#input2")} onBlur={()=>reverseColor("#input2")} required/>
                 </div>
-                <div class="login-button" onClick={()=> signIn()} >Login</div>
+                <div class="login-button" onClick={()=>signIn(history, myInput.username, myInput.password)} >Login</div>
             </div>
         </div>
     )

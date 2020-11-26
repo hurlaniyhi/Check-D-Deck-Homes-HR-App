@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
-import {FaHome, FaTimes, FaPlus, FaEnvelope, FaSignOutAlt} from 'react-icons/fa'
+import { FaPlus, FaEnvelope, FaSignOutAlt } from 'react-icons/fa'
+import DataManager from "../context/dataManager"
 import barImage from '../assets/admin-image6.jpg'
 import barLogo from '../assets/ourlogo.png'
 import Department from './Departments'
@@ -13,24 +14,34 @@ import Email from './Email'
 import Broadcast from './BroadcastMail'
 import Files from './Files'
 import ChangePassword from './ChangePassword'
+import StaffDetails from './StaffDetails'
 
 
 
 const AdminDashboard = () => {
+
+   // const {state, NavigateMe} = useContext(DataManager)
 
     const history = useHistory()
 
     function logOut(info){  
         if(info){
             if(window.confirm("Are you sure you want to log out ?")){
+                localStorage.clear()
                 history.push("/")
             }
         }
         else{
+            localStorage.clear()
             history.push("/")
         } 
         
     }
+
+    async function handleFetch(key, value){
+        await localStorage.setItem(key, value)
+    }
+
 
     document.body.style.background = '#F7FCFC'
 
@@ -48,11 +59,11 @@ const AdminDashboard = () => {
                     <div class="dropdown-menu" id="menu-items" aria-labelledby="dropdownMenuButton">    
                         <Link to="/admin/home"  className="item-button dropdown-item">Home</Link>
                         <Link to="/admin/dept" className="item-button dropdown-item">All departments</Link>
-                        <Link to="/admin/stafflist" className="item-button dropdown-item">All staff</Link>
+                        <Link to="/admin/stafflist" onClick={()=>handleFetch("dept", "all")} className="item-button dropdown-item">All staff</Link>
                         <Link to="/admin/addstaff" className="item-button dropdown-item">Add new staff</Link>
                         <Link to="/admin/email_query" className="item-button dropdown-item">Email/Query Staff</Link>
                         <Link to ="/admin/broadcastmail" className="item-button dropdown-item">Broadcast message</Link>
-                        <Link to="/admin/files" className="item-button dropdown-item">All files</Link>
+                        <Link to="/admin/files" onClick={()=>handleFetch("fileViewer", "all")} className="item-button dropdown-item">All files</Link>
                         <Link to="/admin/work" className="item-button dropdown-item">Instalmental transaction</Link>
                         <Link to="/admin/changepassword" className="item-button dropdown-item">Change Password</Link>
                         <a className="item-button dropdown-item" onClick={()=>logOut()}>LogOut</a>
@@ -96,6 +107,7 @@ const AdminDashboard = () => {
             <Route path="/admin/broadcastmail" component={Broadcast}></Route>
             <Route path="/admin/files" component={Files}></Route>
             <Route path="/admin/changepassword" component={ChangePassword}></Route>
+            <Route path="/admin/staffdetails" component={StaffDetails}></Route>
             <Redirect from="/admin/:id" to="/admin/" />
             </Switch>
             </div>

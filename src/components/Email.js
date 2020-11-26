@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import {FaAngleRight, FaEnvelope} from 'react-icons/fa'
-
+import DataManager from "../context/dataManager"
 
 const Email = () => {
 
-    function test(){
-        alert("Work is in progress!!!")
+    const {state, emailMember} = useContext(DataManager)
+    const [message, setMessage] = useState({receiver: "", subject: "", content: ""})
+
+    function handleEmail(e){
+        setMessage({...message, [e.target.name]: e.target.value})
     }
 
     const getType = localStorage.getItem("info")
@@ -34,20 +37,20 @@ const Email = () => {
             <form className="add-form" autocomplete="off">
                 <p className="form-title add-form-title"><FaEnvelope className="add-staff-icon" />{title}</p>
                 <div class="add-form-group">
-                    <input type="text" class="add-input" placeholder="Receiver name" id="name" required />
+                    <input type="text" class="add-input" name="receiver" onChange={handleEmail} placeholder="Receiver name" id="name" required />
                     <label for="name" class="add-labels">Receiver name</label>
                 </div>
 
                 <div class="add-form-group">
-                    <input type="text" class="add-input" placeholder="Subject" id="subject" required />
+                    <input type="text" class="add-input" name="subject" onChange={handleEmail} placeholder="Subject" id="subject" required />
                     <label for="subject" class="add-labels">Subject</label>
                 </div>
 
                 <div class="add-form-group">
-                    <textarea class="add-input text-area" placeholder="Email Content" required></textarea>
+                    <textarea class="add-input text-area" name="content" onChange={handleEmail} placeholder="Email Content" required></textarea>
                 </div>
 
-                <div class="login-button" onClick={()=>test()}>{sendButton}</div>
+                <div class="login-button" onClick={()=>emailMember(getType, message.receiver, message.subject, message.content)}>{sendButton}</div>
             </form>
         </div>
     )

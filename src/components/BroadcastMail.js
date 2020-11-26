@@ -1,11 +1,15 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useState} from 'react'
 import {FaAngleRight, FaEnvelope} from 'react-icons/fa'
+import DataManager from "../context/dataManager"
 
 
 const Broadcast = () => {
 
-    function test(){
-        alert("Work is in progress!!!")
+    const {state, emailBoard} = useContext(DataManager)
+    const [detail, setDetail] = useState({subject: "", content: ""})
+
+    function handleEmail(e){
+        setDetail({...detail, [e.target.name]: e.target.value})
     }
    
     const getType = localStorage.getItem("info")
@@ -32,15 +36,15 @@ const Broadcast = () => {
                 <p className="form-title add-form-title"><FaEnvelope className="add-staff-icon" />{title}</p>
 
                 <div class="add-form-group">
-                    <input type="text" class="add-input" placeholder="Subject" id="subject" required />
+                    <input type="text" class="add-input" name="subject" onChange={handleEmail} placeholder="Subject" id="subject" required />
                     <label for="subject" class="add-labels">Subject</label>
                 </div>
 
                 <div class="add-form-group">
-                    <textarea class="add-input text-area" placeholder="Email Content" required></textarea>
+                    <textarea class="add-input text-area" name="content" onChange={handleEmail} placeholder="Email Content" required></textarea>
                 </div>
 
-                <div class="login-button" onClick={()=> test()}>Send Message</div>
+                <div class="login-button" onClick={()=> emailBoard(getType, detail.subject, detail.content)}>Send Message</div>
             </form>
 
         </div>
