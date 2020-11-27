@@ -12,6 +12,7 @@ const Broadcast = () => {
         setDetail({...detail, [e.target.name]: e.target.value})
     }
    
+ 
     const getType = localStorage.getItem("info")
     var userType
     var title 
@@ -25,6 +26,12 @@ const Broadcast = () => {
         title = "Message Admin"
     }
 
+    const handleSubmit = async() => {
+        await emailBoard(getType, detail.subject, detail.content)
+        setDetail({...detail, subject: "", content: ""})
+     }
+     
+
     return(
         <div className="add-staff-container">
             <div className="card-title-container dept-topic">
@@ -36,15 +43,15 @@ const Broadcast = () => {
                 <p className="form-title add-form-title"><FaEnvelope className="add-staff-icon" />{title}</p>
 
                 <div class="add-form-group">
-                    <input type="text" class="add-input" name="subject" onChange={handleEmail} placeholder="Subject" id="subject" required />
+                    <input type="text" class="add-input" value={detail.subject} name="subject" onChange={handleEmail} placeholder="Subject" id="subject" required />
                     <label for="subject" class="add-labels">Subject</label>
                 </div>
 
                 <div class="add-form-group">
-                    <textarea class="add-input text-area" name="content" onChange={handleEmail} placeholder="Email Content" required></textarea>
+                    <textarea class="add-input text-area" value={detail.content} name="content" onChange={handleEmail} placeholder="Email Content" required></textarea>
                 </div>
 
-                <div class="login-button" onClick={()=> emailBoard(getType, detail.subject, detail.content)}>Send Message</div>
+                <div class="login-button" onClick={handleSubmit}>Send Message</div>
             </form>
 
         </div>

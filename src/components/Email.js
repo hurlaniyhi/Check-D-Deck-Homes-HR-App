@@ -27,6 +27,11 @@ const Email = () => {
         sendButton = "Send Message"
     }
 
+    const handleSubmit = async() => {
+        await emailMember(getType, message.receiver, message.subject, message.content)
+        setMessage({...message, receiver: "", subject: "", content: ""})
+     }
+
     return(
         <div className="add-staff-container">
             <div className="card-title-container dept-topic">
@@ -37,20 +42,20 @@ const Email = () => {
             <form className="add-form" autocomplete="off">
                 <p className="form-title add-form-title"><FaEnvelope className="add-staff-icon" />{title}</p>
                 <div class="add-form-group">
-                    <input type="text" class="add-input" name="receiver" onChange={handleEmail} placeholder="Receiver name" id="name" required />
-                    <label for="name" class="add-labels">Receiver name</label>
+                    <input type="text" class="add-input" value={message.receiver} name="receiver" onChange={handleEmail} placeholder="Receiver username" id="name" required />
+                    <label for="name" class="add-labels">Receiver username</label>
                 </div>
 
                 <div class="add-form-group">
-                    <input type="text" class="add-input" name="subject" onChange={handleEmail} placeholder="Subject" id="subject" required />
+                    <input type="text" class="add-input" value={message.subject} name="subject" onChange={handleEmail} placeholder="Subject" id="subject" required />
                     <label for="subject" class="add-labels">Subject</label>
                 </div>
 
                 <div class="add-form-group">
-                    <textarea class="add-input text-area" name="content" onChange={handleEmail} placeholder="Email Content" required></textarea>
+                    <textarea class="add-input text-area" value={message.content} name="content" onChange={handleEmail} placeholder="Email Content" required></textarea>
                 </div>
 
-                <div class="login-button" onClick={()=>emailMember(getType, message.receiver, message.subject, message.content)}>{sendButton}</div>
+                <div class="login-button" onClick={handleSubmit}>{sendButton}</div>
             </form>
         </div>
     )

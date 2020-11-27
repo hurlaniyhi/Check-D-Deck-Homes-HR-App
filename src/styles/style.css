@@ -261,6 +261,7 @@ body {
   display: block;
   padding: 1.3rem 0;
   margin: 0 auto;
+  border: none;
   width: 76%;
   background-image: linear-gradient(to right, rgba(0, 3, 155, 0.9), rgba(0, 3, 155, 0.6));
   text-align: center;

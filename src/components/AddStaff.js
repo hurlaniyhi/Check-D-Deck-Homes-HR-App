@@ -6,14 +6,15 @@ import DataManager from "../context/dataManager"
 const AddStaff = () => {
 
     const {state, addUser} = useContext(DataManager)
-
-    const [newUser, setNewUser] = useState({
+    const INITIAL_STATE = {
         firstName: "", lastName: "", 
         email: "", address: "", 
-        userType: "", phoneNumber: null,
+        userType: "", phoneNumber: "",
         jobStatus: "", department: "",
         gender: "", maritalStatus: ""
-    })
+    }
+
+    const [newUser, setNewUser] = useState(INITIAL_STATE)
 
     const handleChange = (e) => {
         
@@ -23,6 +24,11 @@ const AddStaff = () => {
 
     const handlebox = (e) => {
         setNewUser({...newUser, userType: e.target.value})
+    }
+
+    const handleSubmit = async() => {
+       await addUser(newUser)
+       setNewUser(INITIAL_STATE)
     }
 
 
@@ -40,27 +46,27 @@ const AddStaff = () => {
                 </div>
 
                 <div class="add-form-group">
-                    <input type="text" class="add-input" name="lastName" onChange={handleChange} placeholder="Last name" id="name" required />
+                    <input type="text" class="add-input" value={newUser.lastName} name="lastName" onChange={handleChange} placeholder="Last name" id="name" required />
                     <label for="name" class="add-labels">Last name</label>
                 </div>
 
                 <div class="add-form-group">
-                    <input type="email" class="add-input" name="email" onChange={handleChange} placeholder="Staff Email" id="email" required />
+                    <input type="email" class="add-input" value={newUser.email} name="email" onChange={handleChange} placeholder="Staff Email" id="email" required />
                     <label for="email" class="add-labels">Staff Email</label>
                 </div>
 
                 <div class="add-form-group">
-                    <input type="number" class="add-input" name="phoneNumber" onChange={handleChange} placeholder="Phone Number" id="phone" required />
+                    <input type="number" class="add-input" value={newUser.phoneNumber} name="phoneNumber" onChange={handleChange} placeholder="Phone Number" id="phone" required />
                     <label for="phone" class="add-labels">Phone Number</label>
                 </div>
 
                 <div class="add-form-group">
-                    <input type="text" class="add-input" name="address" onChange={handleChange} placeholder="Home Address" id="address" required />
+                    <input type="text" class="add-input" value={newUser.address} name="address" onChange={handleChange} placeholder="Home Address" id="address" required />
                     <label for="address" class="add-labels">Home Address</label>
                 </div>
 
                 <div class="add-form-group">
-                    <select  class="add-input" name="gender" onChange={handleChange} required>
+                    <select  class="add-input" value={newUser.gender} name="gender" onChange={handleChange} required>
                         <option>Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -68,7 +74,7 @@ const AddStaff = () => {
                 </div>
 
                 <div class="add-form-group">
-                    <select  class="add-input" name="maritalStatus" onChange={handleChange} required>
+                    <select  class="add-input" value={newUser.maritalStatus} name="maritalStatus" onChange={handleChange} required>
                         <option>Marital Status</option>
                         <option value="Single">Single</option>
                         <option value="Married">Married</option>
@@ -78,7 +84,7 @@ const AddStaff = () => {
                 </div>
 
                 <div class="add-form-group">
-                    <select  class="add-input" name="department" onChange={handleChange} required>
+                    <select  class="add-input" value={newUser.department} name="department" onChange={handleChange} required>
                         <option>Choose Department</option>
                         <option value="Human Resources">Human Resources</option>
                         <option value="Marketing">Marketing</option>
@@ -89,7 +95,7 @@ const AddStaff = () => {
                 </div>
 
                 <div class="add-form-group">
-                    <select  class="add-input" name="jobStatus" onChange={handleChange} required>
+                    <select  class="add-input" value={newUser.jobStatus} name="jobStatus" onChange={handleChange} required>
                         <option>Job Status</option>
                         <option value="Full Time">Full Time</option>
                         <option value="Part Time">Part Time</option>
@@ -114,7 +120,7 @@ const AddStaff = () => {
                     </div>
                 </div>
 
-                <div class="login-button" onClick={()=> addUser(newUser)}>Add Staff</div>
+                <div class="login-button" onClick={handleSubmit}>Add Staff</div>
                
             </form>
         </div>

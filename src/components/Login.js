@@ -16,6 +16,12 @@ const Login = () => {
         setMyInput({...myInput, [e.target.name]: e.target.value})
     }
 
+    async function handleSubmit(e){
+        e.preventDefault()
+       await signIn(history, myInput.username, myInput.password)
+       setMyInput({...myInput, username: "", password: ""})
+    }
+
     function changeColor(id){
         document.querySelector(id).style.border = "1.8px solid #00039B"
     }
@@ -27,24 +33,25 @@ const Login = () => {
     var title = localStorage.getItem("info")
     document.body.style.background = "linear-gradient(to right, rgba(2, 0, 37, .9), rgba(0, 1, 0, 0.9))"
 
+
     return(
         <div id="login-container">
             
-            <div class="form-wrap">
+            <form class="form-wrap" onSubmit={handleSubmit}>
             <img class="login-logo" src={logo} />
                 <p class="form-title">Login as {title}</p>
                 <label class="label">Username</label>
                 <div class="cover-input" id="input1">
                     <div class="icon-container"><FaUser class="user-icon"/></div>
-                    <input class="user-input" name="username" onChange={handleChange} onClick={()=>changeColor("#input1")} onBlur={()=>reverseColor("#input1")} type="text" placeholder="Enter username" required/>
+                    <input class="user-input" value={myInput.username} name="username" onChange={handleChange} onClick={()=>changeColor("#input1")} onBlur={()=>reverseColor("#input1")} type="text" placeholder="Enter username" required/>
                 </div>
                 <label class="label">Password</label>
                 <div class="cover-input" id="input2">
                 <div class="icon-container"><FaLock class="user-icon"/></div>
-                    <input class="user-input" name="password" onChange={handleChange} type="password" placeholder="Enter Password" onClick={()=>changeColor("#input2")} onBlur={()=>reverseColor("#input2")} required/>
+                    <input class="user-input" value={myInput.password} name="password" onChange={handleChange} type="password" placeholder="Enter Password" onClick={()=>changeColor("#input2")} onBlur={()=>reverseColor("#input2")} required/>
                 </div>
-                <div class="login-button" onClick={()=>signIn(history, myInput.username, myInput.password)} >Login</div>
-            </div>
+                <button value="submit" class="login-button" onClick={handleSubmit}>Login</button>
+            </form>
         </div>
     )
 }
