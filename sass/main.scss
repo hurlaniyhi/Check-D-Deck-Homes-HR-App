@@ -441,6 +441,11 @@ body{
     }
 }
 
+.my-spinner{
+  width: "2.6rem"; 
+  height: "2.6rem"
+}
+
 .login-logo{
     display: block;
     margin: 0 auto;
@@ -705,8 +710,9 @@ body{
 
     .add-label{
       // position: absolute;
-      // top: 6.7rem;
+      // top: 7rem;
       // right: 5.5rem;
+      padding-top: .6rem;
       color: white;
 
       @media (max-width: 560px){
@@ -737,6 +743,10 @@ body{
   outline: none;
   text-decoration: none;
   transition: all .3s;
+
+    @media (max-width: 300px){
+      
+    }
 
     &:hover{
       background-color: rgba(purple, .2);
@@ -1282,6 +1292,10 @@ body{
   margin-top: 3.5rem;
   overflow: hidden;
   border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  //justify-content: center;
+  align-items: center;
   
     @media (max-width: 570px){
       width: 60%
@@ -1297,13 +1311,15 @@ body{
 }
 
 .file-label{
-  padding: 1rem 1.7rem;
+  flex: 2;
+  padding: 1rem .8rem;
   color: white;
   background-color: rgba(#00039B, .7);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  display: inline-block;
+  text-align: center;
   margin: 0;
+  font-size: 1.4rem;
 
     @media (max-width: 290px){
       padding: 1rem 1rem;
@@ -1315,15 +1331,18 @@ body{
 }
 
 .file-show-name{
-  display: inline-block;
-  padding-left: 2rem;
+  flex: 1.7;
+  padding-top: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+  
 
     @media (max-width: 640px){
-      padding-left: 1rem;
+     // padding-left: 1rem;
     }
 
     @media (max-width: 570px){
-      padding-left: 2rem;
+      // padding-left: 2rem;
     }
 }
 
@@ -1833,14 +1852,34 @@ body{
 }
 
 .basic-details{
-  margin: 3rem 2rem
+  margin: 3rem 2rem;
+  @media (max-width: 420px){
+    margin-left: 4rem;
+  }
 }
 
 .details-text{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   font-size: 1.5rem;
-  color: rgba(0, 0, 0, .8)
+  color: rgba(0, 0, 0, .8);
+
+    @media (max-width: 420px){
+      flex-direction: column;
+      align-items: flex-start;
+    }
 }
 
 .details-span{
   color: rgba(0, 0, 0, .5)
+}
+
+.text-text{
+  word-break: break-all; 
+  @media (max-width: 420px){
+    padding-bottom: 1.2rem;
+  }
 }

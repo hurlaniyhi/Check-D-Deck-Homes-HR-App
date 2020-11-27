@@ -15,6 +15,9 @@ const stateReducer = (state, action) => {
 
         case "store_files":
             return {...state, files: action.payload}
+
+        case "request_done":
+            return{...state, requestDone: action.payload}
     }
 
 }
@@ -24,7 +27,7 @@ const stateReducer = (state, action) => {
 export const StateProvider = (props) => {
 
 
-    const [state, dispatch] = useReducer(stateReducer,{user: {}, src: "", members: [], files: []})
+    const [state, dispatch] = useReducer(stateReducer,{user: {}, src: "", members: [], files: [], requestDone: false})
 
 
     const signIn = async(history, username, password) => {
@@ -35,16 +38,14 @@ export const StateProvider = (props) => {
 
         try{
             const response = await myAPI.post('/login', {username, password, userType: getInfo})
+            await dispatch({type: "request_done", payload: true})
             if(response.data.message === "success"){
                 await localStorage.setItem("token", response.data.token)
                 await localStorage.setItem("username", response.data.profile.username)
+                await dispatch({type: "request_done", payload: false})
                 //await dispatch({type: "store_user_data", payload: response.data.profile})
-                if(getInfo === "Admin"){
-                    history.push("/admin")
-                }
-                else if(getInfo === "Staff"){
-                    history.push("/staff")
-                }
+                
+               history.push("/resolve")
             }
             else if(response.data.message === "type-issue"){
                 alert(response.data.info)

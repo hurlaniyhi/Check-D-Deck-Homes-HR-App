@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import {FaAngleRight, FaUserPlus} from 'react-icons/fa'
 import DataManager from "../context/dataManager"
+import { Puff } from 'svg-loaders-react'
 
 
 const AddStaff = () => {
@@ -27,8 +28,10 @@ const AddStaff = () => {
     }
 
     const handleSubmit = async() => {
-       await addUser(newUser)
-       setNewUser(INITIAL_STATE)
+        document.querySelector(".loads").style.display = "inline-block"
+        await addUser(newUser)
+        document.querySelector(".loads").style.display = "none"
+        setNewUser(INITIAL_STATE)
     }
 
 
@@ -120,7 +123,14 @@ const AddStaff = () => {
                     </div>
                 </div>
 
-                <div class="login-button" onClick={handleSubmit}>Add Staff</div>
+                <div class="login-button" onClick={handleSubmit}>
+                    Add Staff
+                    <Puff
+                        className="loads"
+                        stroke="white" strokeOpacity=".8" 
+                        style={{width: "2.6rem", height: "2.6rem", marginLeft: "1.2rem", display: "none"}} 
+                    />
+                </div>
                
             </form>
         </div>

@@ -21,39 +21,44 @@ const StaffDetails = () => {
                 <div className="details-content">
                     <p className="details-title">Basic Information</p>
                     <div className="basic-details">
-                        <p className="details-text"><span className="details-span">First Name</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.firstName}
-                        </p>
-                        <p className="details-text"><span className="details-span">Last Name</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.lastName}
-                        </p>
-                        <p className="details-text"><span className="details-span">Department</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.department}
-                        </p>
-                        <p className="details-text"><span className="details-span">Email</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.email}
-                        </p>
-                        <p className="details-text"><span className="details-span">Address</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.address}
-                        </p>
-                        <p className="details-text"><span className="details-span">gender</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.gender}
-                        </p>
-                        <p className="details-text"><span className="details-span">Marital Status</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.maritalStatus}
-                        </p>
-                        <p className="details-text"><span className="details-span">Phone Number</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.phoneNumber}
-                        </p>
-                        <p className="details-text"><span className="details-span">Username</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.username}
-                        </p>
-                        <p className="details-text"><span className="details-span">Job Status</span>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {state.user.jobStatus}
-                        </p>
+                        <div className="details-text">
+                            <p className="details-span">First Name</p>
+                           <p className="text-text">{state.user.firstName}</p>
+                        </div>
+                        <div className="details-text">
+                            <p className="details-span">Last Name</p>
+                            <p className="text-text">{state.user.lastName}</p>
+                        </div>
+                        <div className="details-text">
+                            <p className="details-span">Department</p>
+                             <p className="text-text">{state.user.department}</p>
+                        </div>
+                        <div className="details-text">
+                            <p className="details-span">Email</p>
+                            <p className="text-text">{state.user.email}</p>
+                        </div>
+                        <div className="details-text"><p className="details-span">Address</p>
+                           <p className="text-text">{state.user.address}</p>
+                        </div>
+                        <div className="details-text">
+                            <p className="details-span">gender</p>
+                            <p className="text-text">{state.user.gender}</p>
+                        </div>
+                        <div className="details-text">
+                            <p className="details-span">Marital Status</p>
+                            <p className="text-text">{state.user.maritalStatus}</p>
+                        </div>
+                        <div className="details-text">
+                            <p className="details-span">Phone Number</p>
+                            <p className="text-text">{state.user.phoneNumber}</p>
+                        </div>
+                        <div className="details-text">
+                            <p className="details-span">Username</p>
+                            <p className="text-text">{state.user.username}</p>
+                        </div>
+                        <div className="details-text"><p className="details-span">Job Status</p>
+                            <p className="text-text">{state.user.jobStatus}</p>
+                        </div>
                     </div>
                 </div>
             </div>

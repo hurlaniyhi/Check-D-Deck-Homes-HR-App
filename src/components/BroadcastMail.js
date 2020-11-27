@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react'
 import {FaAngleRight, FaEnvelope} from 'react-icons/fa'
 import DataManager from "../context/dataManager"
+import { Puff } from 'svg-loaders-react'
 
 
 const Broadcast = () => {
@@ -27,7 +28,9 @@ const Broadcast = () => {
     }
 
     const handleSubmit = async() => {
+        document.querySelector(".loads").style.display = "inline-block"
         await emailBoard(getType, detail.subject, detail.content)
+        document.querySelector(".loads").style.display = "none"
         setDetail({...detail, subject: "", content: ""})
      }
      
@@ -51,7 +54,14 @@ const Broadcast = () => {
                     <textarea class="add-input text-area" value={detail.content} name="content" onChange={handleEmail} placeholder="Email Content" required></textarea>
                 </div>
 
-                <div class="login-button" onClick={handleSubmit}>Send Message</div>
+                <div class="login-button" onClick={handleSubmit}>
+                    Send Message
+                    <Puff
+                        className="loads"
+                        stroke="white" strokeOpacity=".8" 
+                        style={{width: "2.6rem", height: "2.6rem", marginLeft: "1.2rem", display: "none"}} 
+                    />
+                </div>
             </form>
 
         </div>

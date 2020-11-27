@@ -13,6 +13,7 @@ import {
     AiFillVideoCamera
 } from 'react-icons/ai'
 import DataManager from "../context/dataManager"
+import { SpinningCircles, Puff } from 'svg-loaders-react'
 
 
 const Files = () => {
@@ -23,9 +24,11 @@ const Files = () => {
         fetchFiles()
     }, [])
 
+
     function getFile(data){
         downloadFile(data)
     }
+
 
     async function removeFile(gfsId, fileId){
         if(window.confirm("Are you sure you want to delete this file ?")){
@@ -33,6 +36,7 @@ const Files = () => {
             fetchFiles()
         }   
     }
+
 
     
     const files = state.files.map(file =>{
@@ -90,9 +94,15 @@ const Files = () => {
                 <p className="card-title">All Files</p>
                 <FaAngleRight className="access-icon"/>   
             </div>
-            <div className="file-container">
-                {files}
-            </div>
+            { state.files ? <div className="file-container">
+                {files} 
+                </div>: 
+                <Puff
+                className="loads"
+                stroke="black" strokeOpacity=".8" 
+                style={{width: "5rem", height: "5rem", marginLeft: "1.2rem", marginTop: "3rem"}} 
+                />
+            }
         </div>
     )
 }

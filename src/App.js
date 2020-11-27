@@ -4,6 +4,7 @@ import Home from './components/Homepage'
 import Login from './components/Login'
 import AdminDashboard from './components/AdminDashboard'
 import StaffDashboard from './components/StaffDashboard'
+import ResolveAuth from './components/ResolveAuth'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/login" component={Login}></Route>
           <Route path="/admin" component={AdminDashboard}></Route>
           <Route path="/staff" component={StaffDashboard}></Route>
+          <Route path="/resolve" component={ResolveAuth}></Route>
           <Redirect from="/:id" to="/" />
           </Switch>
       </Router>
