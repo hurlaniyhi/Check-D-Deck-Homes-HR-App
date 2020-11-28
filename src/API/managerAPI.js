@@ -5,7 +5,7 @@ import axios from 'axios'
 //https://staff-manager-server.herokuapp.com
 //http://localhost:5000
 
-const instance = axios.create({ // this is our config
+const instance = axios.create({
     baseURL:  "https://staff-manager-server.herokuapp.com"   
 })
 

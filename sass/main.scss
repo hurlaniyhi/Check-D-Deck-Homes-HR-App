@@ -69,14 +69,14 @@ body{
     }
   }
 
-  @keyframes writeLetters {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 100%;
-    }
-  }
+  // @keyframes writeLetters {
+  //   from {
+  //     width: 0%;
+  //   }
+  //   to {
+  //     width: 100%;
+  //   }
+  // }
   
   @keyframes blink-caret {
     from {
@@ -94,7 +94,7 @@ body{
     }
   
     80% {
-      transform: translateX(1rem);
+      transform: translateX(0rem);
     }
   
     100% {
@@ -106,12 +106,13 @@ body{
   @keyframes moveInRight {
     0% {
       opacity: 0;
-      transform: translateX(15rem);
+      transform: translateX(0rem);
     }
   
-    80% {
-      transform: translateX(-1rem);
+    50% {
+      transform: translateX(-12rem);
     }
+   
   
     100% {
       opacity: 1;
@@ -233,7 +234,7 @@ body{
     -webkit-animation: color-change 3s infinite 1s;
     -moz-animation: color-change 3s infinite 1s;
     animation: color-change 3s infinite 1s;
-    padding: 0 4rem
+    padding: 0 4rem 1rem 4rem
 }
 
 .sales{
