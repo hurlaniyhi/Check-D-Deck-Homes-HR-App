@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../styles/style.css'
 import logo from "../assets/ourlogo.png"
 import {useHistory, Link} from 'react-router-dom'
@@ -7,6 +7,10 @@ import {useHistory, Link} from 'react-router-dom'
 const Home = () => {
 
     const history = useHistory()
+
+    useEffect(()=>{
+        localStorage.clear()
+    },[])
 
     function Login(info){
         localStorage.setItem("info", info)

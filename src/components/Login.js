@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import '../styles/style.css'
 import {FaUser, FaLock} from 'react-icons/fa'
 import logo from "../assets/ourlogo.png"
@@ -13,7 +13,7 @@ const Login = () => {
     const [myInput, setMyInput] = useState({username: "", password: ""})
 
     const history = useHistory()
-
+   
     const handleChange = (e) => {
         setMyInput({...myInput, [e.target.name]: e.target.value})
     }
@@ -45,10 +45,30 @@ const Login = () => {
     document.body.style.background = "linear-gradient(to right, rgba(2, 0, 37, .9), rgba(0, 1, 0, 0.9))"
 
 
+    const type = localStorage.getItem("info")
+    const token = localStorage.getItem("token")
+
+    if(token && (type === "Admin")){
+       var nav = true
+       var move = history.push("/admin")
+    }
+    else if(token && (type === "Staff")){
+        var nav = true
+       var move = history.push("/staff")
+    }
+    else if(!type){
+        var nav = true
+        var move = history.push("/")
+    }
+    else{
+        var nav = false
+    }
+
+
     return(
         <div id="login-container">
             
-            <form class="form-wrap" onSubmit={handleSubmit}>
+           {nav === false ? <form class="form-wrap" onSubmit={handleSubmit}>
             <img class="login-logo" src={logo} />
                 <p class="form-title">Login as {title}</p>
                 <label class="label">Username</label>
@@ -69,7 +89,8 @@ const Login = () => {
                         style={{width: "2.6rem", height: "2.6rem", marginLeft: "1.2rem", display: "none"}} 
                         />
                 </button>
-            </form>
+            </form>:
+            move}
            
         </div>
     )
