@@ -14,6 +14,7 @@ import {
 } from 'react-icons/ai'
 import DataManager from "../context/dataManager"
 import { SpinningCircles, Puff } from 'svg-loaders-react'
+import Loader from 'react-loader-spinner'
 
 
 const Files = () => {
@@ -94,14 +95,17 @@ const Files = () => {
                 <p className="card-title">All Files</p>
                 <FaAngleRight className="access-icon"/>   
             </div>
-            { state.files ? <div className="file-container">
+            { state.files.length >= 1 ? <div className="file-container">
                 {files} 
                 </div>: 
-                <Puff
-                className="loads"
-                stroke="black" strokeOpacity=".8" 
-                style={{width: "5rem", height: "5rem", marginLeft: "1.2rem", marginTop: "3rem"}} 
-                />
+                <Loader className="loads"
+                type="Puff"
+                color="#192B51"
+                height={70}
+                width={70}
+                // timeout={3000} //3 secs
+                style={{textAlign:"center", marginTop: "6.5rem"}}
+            />
             }
         </div>
     )

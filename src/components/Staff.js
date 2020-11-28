@@ -4,6 +4,7 @@ import { FaTrash, FaAngleRight } from 'react-icons/fa'
 //import staffImage from "../assets/dp3.jpg"
 import userImage2 from '../assets/userdp.jpg'
 import DataManager from "../context/dataManager"
+import Loader from 'react-loader-spinner'
 
 
 
@@ -56,7 +57,16 @@ const Staff = () => {
                 <p className="card-title staff-topc">Staff List</p>
                 <FaAngleRight className="access-icon"/>   
             </div>
-            {members}
+           {state.members.length >= 1 ? members:
+                <Loader className="loads"
+                type="Puff"
+                color="#192B51"
+                height={70}
+                width={70}
+                // timeout={3000} //3 secs
+                style={{textAlign:"center", marginTop: "6.5rem"}}
+                />
+           }
         </div>
     )
 }

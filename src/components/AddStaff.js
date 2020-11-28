@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import {FaAngleRight, FaUserPlus} from 'react-icons/fa'
 import DataManager from "../context/dataManager"
 import { Puff } from 'svg-loaders-react'
+import Loader from 'react-loader-spinner'
 
 
 const AddStaff = () => {
@@ -28,9 +29,13 @@ const AddStaff = () => {
     }
 
     const handleSubmit = async() => {
-        document.querySelector(".loads").style.display = "inline-block"
+        document.querySelector("#normals").style.display = "none"
+        document.querySelector("#loads").style.display = "block"
+        
         await addUser(newUser)
-        document.querySelector(".loads").style.display = "none"
+        
+        document.querySelector("#loads").style.display = "none"
+        document.querySelector("#normals").style.display = "block"
         setNewUser(INITIAL_STATE)
     }
 
@@ -123,12 +128,18 @@ const AddStaff = () => {
                     </div>
                 </div>
 
-                <div class="login-button" onClick={handleSubmit}>
+                <div class="login-button" onClick={handleSubmit} id="normals">
                     Add Staff
-                    <Puff
-                        className="loads"
-                        stroke="white" strokeOpacity=".8" 
-                        style={{width: "2.6rem", height: "2.6rem", marginLeft: "1.2rem", display: "none"}} 
+                </div>
+                <div class="login-button" id="loads" style={{display: "none"}}>
+                    Adding
+                    <Loader 
+                    type="Puff"
+                    color="#eee"
+                    height={23}
+                    width={23}
+                    // timeout={3000} //3 secs
+                    style={{textAlign:"center", display: "inline-block", marginLeft: "1rem"}}
                     />
                 </div>
                

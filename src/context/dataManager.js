@@ -31,33 +31,39 @@ export const StateProvider = (props) => {
 
 
     const signIn = async(history, username, password) => {
+        await dispatch({type: "request_done", payload: true})
         const getInfo = await localStorage.getItem("info")
+        
         if(!username || !password){
+            await dispatch({type: "request_done", payload: false})
           return alert("Kindly provide your username and password")
         }
 
         try{
             const response = await myAPI.post('/login', {username, password, userType: getInfo})
-            await dispatch({type: "request_done", payload: true})
+            //await dispatch({type: "request_done", payload: true})
             if(response.data.message === "success"){
                 await localStorage.setItem("token", response.data.token)
                 await localStorage.setItem("username", response.data.profile.username)
-                await dispatch({type: "request_done", payload: false})
-                //await dispatch({type: "store_user_data", payload: response.data.profile})
-                
+
                history.push("/resolve")
+               
             }
             else if(response.data.message === "type-issue"){
                 alert(response.data.info)
                 if(window.confirm("Did you want to re-select account type")){
                     history.push("/")
+                    
                 }   
             }
             else{
+                
                 alert(response.data.message)
             }
+            await dispatch({type: "request_done", payload: false})
         }
         catch(err){
+            await dispatch({type: "request_done", payload: false})
             alert("No network connection")
         }       
     }

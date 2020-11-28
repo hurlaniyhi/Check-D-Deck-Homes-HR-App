@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import {FaAngleRight, FaLock} from 'react-icons/fa'
 import DataManager from "../context/dataManager"
 import { Puff } from 'svg-loaders-react'
+import Loader from 'react-loader-spinner'
 
 
 const ChangePassword = () => {
@@ -14,11 +15,13 @@ const ChangePassword = () => {
     }
 
     async function handleSubmit(){
-        document.querySelector(".loads").style.display = "inline-block"
+        document.querySelector("#normals").style.display = "none"
+        document.querySelector("#loads").style.display = "block"
 
         await switchPassword(password.newPassword, password.confirmPassword)
 
-        document.querySelector(".loads").style.display = "none"
+        document.querySelector("#loads").style.display = "none"
+        document.querySelector("#normals").style.display = "block"
         setPassword({...password, newPassword: "", confirmPassword: ""})
     }
 
@@ -43,12 +46,18 @@ const ChangePassword = () => {
                     <label for="subject" class="add-labels">Confirm Password</label>
                 </div>
 
-                <div class="login-button" onClick={handleSubmit}>
+                <div class="login-button" onClick={handleSubmit} id="normals">
                     send
-                    <Puff
-                        className="loads"
-                        stroke="white" strokeOpacity=".8" 
-                        style={{width: "2.6rem", height: "2.6rem", marginLeft: "1.2rem", display: "none"}} 
+                </div>
+                <div class="login-button" id="loads" style={{display: "none"}}>
+                    Changing
+                    <Loader 
+                    type="Puff"
+                    color="#eee"
+                    height={23}
+                    width={23}
+                    // timeout={3000} //3 secs
+                    style={{textAlign:"center", display: "inline-block", marginLeft: "1rem"}}
                     />
                 </div>
             </form>

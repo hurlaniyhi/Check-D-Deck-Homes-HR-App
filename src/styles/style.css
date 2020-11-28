@@ -251,7 +251,7 @@ body {
 .label {
   display: block;
   margin: 0 auto;
-  width: 75%;
+  width: 70%;
   padding-bottom: 1rem;
   font-size: 1.3rem;
   font-weight: 500;
@@ -262,7 +262,7 @@ body {
   padding: 1.3rem 0;
   margin: 0 auto;
   border: none;
-  width: 76%;
+  width: 70%;
   background-image: linear-gradient(to right, rgba(0, 3, 155, 0.9), rgba(0, 3, 155, 0.6));
   text-align: center;
   text-decoration: none;
@@ -541,11 +541,11 @@ body {
 .home-cards {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap; }
 
 .card-wide {
-  flex-grow: 1;
   text-align: center;
   display: flex;
   justify-content: center;

@@ -24,7 +24,7 @@ const StaffHome = () => {
                 <FaAngleDoubleRight className="access-icon"/>
             </div>
            <div className="home-cards">
-           <div className="card-wide" onClick={()=>info("uploadfile")}>
+                <div className="card-wide" onClick={()=>info("uploadfile")}>
                    <p className="card-content">Upload New File</p>
                </div>
                <div className="card-wide" onClick={()=>uploaded("fileViewer", "staff", "files")}>
@@ -39,9 +39,9 @@ const StaffHome = () => {
                <div className="card-wide" onClick={()=>info("changepassword")}>
                    <p className="card-content">Change Password</p>
                </div>
-               {/* <div className="card-wide">
-                   <p className="card-content">Time Off Requests</p>
-               </div> */}
+               <div className="card-wide">
+                   <p className="card-content">Time Off Request</p>
+               </div>
               
            </div>
         </div>

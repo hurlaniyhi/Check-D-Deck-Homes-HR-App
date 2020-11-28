@@ -5,7 +5,7 @@ import logo from "../assets/ourlogo.png"
 import {useHistory} from 'react-router-dom'
 import DataManager from "../context/dataManager"
 import { SpinningCircles, ThreeDots, Puff } from 'svg-loaders-react'
-//import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner'
 
 const Login = () => {
 
@@ -20,16 +20,13 @@ const Login = () => {
 
     async function handleSubmit(e){
         e.preventDefault()
-        document.querySelector(".loads").style.display = "inline-block"
        
         await signIn(history, myInput.username, myInput.password)
-       
+      
         setMyInput({...myInput, username: "", password: ""})
     }
-
-    if(state.requestDone){
-        document.querySelector(".loads").style.display = "none"
-    }
+    
+   
 
     // LOGIC FOR A PARTICULAR STYLING
     function changeColor(id){
@@ -81,14 +78,25 @@ const Login = () => {
                 <div class="icon-container"><FaLock class="user-icon"/></div>
                     <input class="user-input" value={myInput.password} name="password" onChange={handleChange} type="password" placeholder="Enter Password" onClick={()=>changeColor("#input2")} onBlur={()=>reverseColor("#input2")} required/>
                 </div>
-                <button value="submit" class="login-button" onClick={handleSubmit}>
+               {!state.requestDone ? <button value="submit" class="login-button" id="normals" onClick={handleSubmit}>
                     Login 
-                    <Puff
+                    {/* <Puff
                         className="loads"
                         stroke="white" strokeOpacity=".8" 
                         style={{width: "2.6rem", height: "2.6rem", marginLeft: "1.2rem", display: "none"}} 
-                        />
-                </button>
+                        /> */}
+                </button> :
+                <button value="submit" class="login-button" id="loads">
+                    loading
+                    <Loader 
+                    type="Puff"
+                    color="#eee"
+                    height={23}
+                    width={23}
+                    // timeout={3000} //3 secs
+                    style={{textAlign:"center", display: "inline-block", marginLeft: "1rem"}}
+                    />
+                </button>}
             </form>:
             move}
            

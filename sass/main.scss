@@ -411,7 +411,7 @@ body{
 .label{
     display: block;
     margin: 0 auto;
-    width: 75%;
+    width: 70%;
     padding-bottom: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
@@ -423,7 +423,7 @@ body{
     padding: 1.3rem 0;
     margin: 0 auto;
     border: none;
-    width: 76%;
+    width: 70%;
     background-image: linear-gradient(to right, rgba(#00039B, .9), rgba(#00039B, .6));
     text-align: center;
     text-decoration: none;
@@ -837,13 +837,13 @@ body{
 .home-cards{
   display: flex;
   flex-direction: row;
-  //justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .card-wide{
-  flex-grow: 1;
+  //flex-grow: 1;
   //flex-basis: 15rem;
   text-align: center;
   display: flex;
