@@ -26,8 +26,9 @@ const Files = () => {
     }, [])
 
 
-    function getFile(data){
-        downloadFile(data)
+   function getFile(data, id){
+       
+       downloadFile(data, id)
     }
 
 
@@ -65,7 +66,7 @@ const Files = () => {
                     {file.description ? <p className="file-text">{description}</p> :
                     <p className="file-text">No Description</p> }
                 </div>
-                <div className="file-detail">
+                {state.operation != file._id ? <div className="file-detail">
                     <div className="file-name">
                         {getExt == "pdf" ? <AiFillFilePdf className="file-icon" style={{color: "red"}}/>:
                         getExt == "docx" ? <AiFillFileWord className="file-icon" style={{color: "#1F61BB"}} />:
@@ -81,10 +82,20 @@ const Files = () => {
                         <p className="file-file-name">{name}</p>
                     </div>
                     <div className="file-name">
-                        <FaDownload className="file-download" onClick={()=>getFile(file.fileBinary)} />
+                        <FaDownload className="file-download" onClick={()=>getFile(file.fileBinary, file._id)} />
                         <FaTrash className="file-download" onClick={()=>removeFile(file.gfsId, file._id)} />
                     </div>
-                </div>
+                
+                </div>:
+                  <Loader className="loads"
+                    type="ThreeDots"
+                    color="#192B51"
+                    height={40}
+                    width={40}
+                    // timeout={3000} //3 secs
+                    style={{textAlign:"center", marginBottom: "1rem"}}
+                />}
+                
             </div>
         )
     })

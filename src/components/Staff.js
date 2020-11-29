@@ -29,8 +29,9 @@ const Staff = () => {
     }
 
    async function work(user){
+        localStorage.setItem("staffDetails", user)
         history.push("/admin/staffdetails")
-        fetchUser(user)
+        // fetchUser(user)
     }
 
     const members = state.members.map(member =>{

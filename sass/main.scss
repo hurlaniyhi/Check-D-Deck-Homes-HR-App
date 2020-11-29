@@ -439,6 +439,8 @@ body{
 
     &:hover, &:active, &:focus{
         background-image: linear-gradient(to right, rgba(#00039B, 1), rgba(#00039B, .7));
+        outline: none !important;
+        box-shadow: none;
     }
 }
 
@@ -1311,6 +1313,8 @@ body{
     }
 }
 
+
+
 .file-label{
   flex: 2;
   padding: 1rem .8rem;
@@ -1329,6 +1333,48 @@ body{
     &:hover, &:focus{
       background-color: rgba(230, 230, 230, 1);
     }
+}
+
+.test-file{
+  margin: 0 auto;
+  width: 70%;
+  height: 4.5rem;
+  border: 1px solid rgba(#000, .2);
+  outline: none;
+  transition: all .3s;
+  font-size: 1.5rem;
+  margin-top: 3.5rem;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+
+    &:focus {
+      box-shadow: 0 1rem 2rem rgba(#000, .1);
+    }
+  
+}
+.test-content{
+  color: white;
+  background-color: rgba(#00039B, .7);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  height: 100%;
+  padding: 1.1rem 1.2rem;
+  margin-right: 1.5rem;
+
+    &:hover, &:focus{
+      background-color: rgba(230, 230, 230, 1);
+    }
+}
+
+.test-text{
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 9.5rem;
+
+  transform: translateY(-50%);
 }
 
 .file-show-name{
@@ -1868,7 +1914,7 @@ body{
   font-size: 1.5rem;
   color: rgba(0, 0, 0, .8);
 
-    @media (max-width: 420px){
+    @media (max-width: 410px){
       flex-direction: column;
       align-items: flex-start;
     }

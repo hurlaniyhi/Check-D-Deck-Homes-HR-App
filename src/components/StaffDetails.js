@@ -1,13 +1,23 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import userImage2 from '../assets/userdp.jpg'
 import DataManager from "../context/dataManager"
+import Loader from 'react-loader-spinner'
 
 
 
 const StaffDetails = () => {
 
-    const {state} = useContext(DataManager)
+    const {state, fetchUser} = useContext(DataManager)
+
+    useEffect(()=>{
+        profile()
+    }, [])
+
+    async function profile(){
+       var staff = await localStorage.getItem("staffDetails")
+       fetchUser(staff)
+    }
 
     return(
         <div className="details-cover">
@@ -15,7 +25,7 @@ const StaffDetails = () => {
                 <p className="card-title staff-topc">Staff Profile</p>
                 <FaAngleRight className="access-icon"/>   
             </div>
-            <div className="details-container">
+           {state.user ? <div className="details-container">
                 {state.user.profilePicture ? <img src={state.user.profilePicture} className="details-image" />:
                 <img src={userImage2} className="details-image" />}
                 <div className="details-content">
@@ -61,7 +71,15 @@ const StaffDetails = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>:
+                <Loader className="loads"
+                type="Puff"
+                color="#192B51"
+                height={70}
+                width={70}
+                // timeout={3000} //3 secs
+                style={{textAlign:"center", marginTop: "6.5rem"}}
+            />}
         </div>
     )
 }

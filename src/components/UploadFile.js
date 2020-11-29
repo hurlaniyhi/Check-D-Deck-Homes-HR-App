@@ -8,7 +8,7 @@ const UploadFile = () => {
 
     const {state, saveFile} = useContext(DataManager)
 
-    const [upload, setUpload] = useState({description: "", file: null, selected: "none"})
+    const [upload, setUpload] = useState({description: "", file: null, selected: ""})
 
     function handleDescription(e){
         
@@ -16,7 +16,7 @@ const UploadFile = () => {
     }
 
     function handleFile(e){
-        setUpload({...upload, file: e.target.files[0], selected: "Chosen"})
+        setUpload({...upload, file: e.target.files[0], selected: e.target.files[0].name})
     }
 
     async function uploadFile(){
@@ -30,7 +30,7 @@ const UploadFile = () => {
         await saveFile(upload.file, data)
         document.querySelector("#loads").style.display = "none"
         document.querySelector("#normals").style.display = "block"
-        setUpload({...upload, selected: "none", description: ""})
+        setUpload({...upload, selected: "", description: ""})
     }
 
     return(
@@ -49,11 +49,12 @@ const UploadFile = () => {
 
                 <div class="add-form-group">
                     <input type="file" id="document" onChange={handleFile} class="input-file" required/>
-                    <div className="new-file">
-                        <label className="file-label" for="document">Choose File</label>
-                        <p className="file-show-name">{upload.selected}</p>
+                    <div className="test-file">
+                        <label className="test-content" for="document">Browse</label>
+                        <p className="test-text">{upload.selected}</p>
                     </div>
                 </div>
+
 
                 <div class="login-button" onClick={()=>uploadFile()} id="normals">
                     Upload File

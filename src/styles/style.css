@@ -269,7 +269,9 @@ body {
   margin-top: 5rem;
   cursor: pointer; }
   .login-button:hover, .login-button:active, .login-button:focus {
-    background-image: linear-gradient(to right, #00039b, rgba(0, 3, 155, 0.7)); }
+    background-image: linear-gradient(to right, #00039b, rgba(0, 3, 155, 0.7));
+    outline: none !important;
+    box-shadow: none; }
 
 .my-spinner {
   width: "2.6rem";
@@ -864,6 +866,40 @@ body {
   .file-label:hover, .file-label:focus {
     background-color: #e6e6e6; }
 
+.test-file {
+  margin: 0 auto;
+  width: 70%;
+  height: 4.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  transition: all .3s;
+  font-size: 1.5rem;
+  margin-top: 3.5rem;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative; }
+  .test-file:focus {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1); }
+
+.test-content {
+  color: white;
+  background-color: rgba(0, 3, 155, 0.7);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  height: 100%;
+  padding: 1.1rem 1.2rem;
+  margin-right: 1.5rem; }
+  .test-content:hover, .test-content:focus {
+    background-color: #e6e6e6; }
+
+.test-text {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 9.5rem;
+  transform: translateY(-50%); }
+
 .file-show-name {
   flex: 1.7;
   padding-top: 1rem;
@@ -1256,7 +1292,7 @@ body {
   align-items: center;
   font-size: 1.5rem;
   color: rgba(0, 0, 0, 0.8); }
-  @media (max-width: 420px) {
+  @media (max-width: 410px) {
     .details-text {
       flex-direction: column;
       align-items: flex-start; } }

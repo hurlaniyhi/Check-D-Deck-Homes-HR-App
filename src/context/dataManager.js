@@ -16,6 +16,9 @@ const stateReducer = (state, action) => {
         case "store_files":
             return {...state, files: action.payload}
 
+        case "operation_status":
+            return {...state, operation: action.payload}
+
         case "request_done":
             return{...state, requestDone: action.payload}
     }
@@ -27,7 +30,9 @@ const stateReducer = (state, action) => {
 export const StateProvider = (props) => {
 
 
-    const [state, dispatch] = useReducer(stateReducer,{user: {}, src: "", members: [], files: [], requestDone: false})
+    const [state, dispatch] = useReducer(stateReducer,{
+        user: {}, src: "", members: [], files: [], requestDone: false, operation: ""
+    })
 
 
     const signIn = async(history, username, password) => {
@@ -250,27 +255,32 @@ export const StateProvider = (props) => {
         }
     }
 
-    const downloadFile = async(query) => {
+    const downloadFile = async(query, id) => {
+        await dispatch({type: "operation_status", payload: id})
         
-            await myAPI.get(`/file/${query}`)
-                .then(()=>{
-                    window.open(`https://staff-manager-server.herokuapp.com/file/${query}`, '_blank')
-                })
-                .catch((err)=>{
-                    alert("No network connection")
-                })
+        await myAPI.get(`/file/${query}`)
+            .then(()=>{
+                window.open(`https://staff-manager-server.herokuapp.com/file/${query}`, '_blank')
+            })
+            .catch((err)=>{
+                alert("No network connection")
+            })
+        await dispatch({type: "operation_status", payload: ""})
                     
     }
 
     const deleteFile = async(gfsId, fileId) => {
+        await dispatch({type: "operation_status", payload: fileId})
         try{
             const response = await myAPI.post('/deleteFile', {gfsId, fileId})
             if(response.data.message != "success"){
                 alert(response.data.message)
             }
+            await dispatch({type: "operation_status", payload: ""})
            
         }
         catch(err){
+            await dispatch({type: "operation_status", payload: ""})
             alert("No network connection")
         }
     }
