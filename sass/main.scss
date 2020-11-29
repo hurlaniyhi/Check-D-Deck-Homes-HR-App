@@ -1285,56 +1285,6 @@ body{
   display: none;
 }
 
-.new-file{
-  margin: 0 auto;
-  width: 50%;
-  border: 1px solid rgba(#000, .2);
-  outline: none;
-  transition: all .3s;
-  font-size: 1.5rem;
-  margin-top: 3.5rem;
-  overflow: hidden;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  //justify-content: center;
-  align-items: center;
-  
-    @media (max-width: 570px){
-      width: 60%
-    }
-
-    @media (max-width: 330px){
-      width: 67%
-    }
-
-    &:focus {
-      box-shadow: 0 1rem 2rem rgba(#000, .1);
-    }
-}
-
-
-
-.file-label{
-  flex: 2;
-  padding: 1rem .8rem;
-  color: white;
-  background-color: rgba(#00039B, .7);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  text-align: center;
-  margin: 0;
-  font-size: 1.4rem;
-
-    @media (max-width: 290px){
-      padding: 1rem 1rem;
-    }
-
-    &:hover, &:focus{
-      background-color: rgba(230, 230, 230, 1);
-    }
-}
-
 .test-file{
   margin: 0 auto;
   width: 70%;
@@ -1373,8 +1323,32 @@ body{
   position: absolute;
   top: 50%;
   left: 9.5rem;
+  font-size: 1.2rem;
 
   transform: translateY(-50%);
+}
+
+#none-file{
+  padding-left: 4.5rem;
+
+  @media (max-width: 600px){
+    padding-left: 3.2rem;
+  }
+
+  @media (max-width: 450px){
+    padding-left: 2.5rem;
+  }
+
+  @media (max-width: 360px){
+    padding-left: 1.5rem;
+  }
+  @media (max-width: 295px){
+    padding-left: .6rem;
+  }
+
+  @media (max-width: 280px){
+    padding-left: .2rem;
+  }
 }
 
 .file-show-name{

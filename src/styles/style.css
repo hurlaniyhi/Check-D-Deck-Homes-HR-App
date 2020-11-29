@@ -828,44 +828,6 @@ body {
 .input-file {
   display: none; }
 
-.new-file {
-  margin: 0 auto;
-  width: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  outline: none;
-  transition: all .3s;
-  font-size: 1.5rem;
-  margin-top: 3.5rem;
-  overflow: hidden;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center; }
-  @media (max-width: 570px) {
-    .new-file {
-      width: 60%; } }
-  @media (max-width: 330px) {
-    .new-file {
-      width: 67%; } }
-  .new-file:focus {
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1); }
-
-.file-label {
-  flex: 2;
-  padding: 1rem .8rem;
-  color: white;
-  background-color: rgba(0, 3, 155, 0.7);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  text-align: center;
-  margin: 0;
-  font-size: 1.4rem; }
-  @media (max-width: 290px) {
-    .file-label {
-      padding: 1rem 1rem; } }
-  .file-label:hover, .file-label:focus {
-    background-color: #e6e6e6; }
-
 .test-file {
   margin: 0 auto;
   width: 70%;
@@ -898,7 +860,26 @@ body {
   position: absolute;
   top: 50%;
   left: 9.5rem;
+  font-size: 1.2rem;
   transform: translateY(-50%); }
+
+#none-file {
+  padding-left: 4.5rem; }
+  @media (max-width: 600px) {
+    #none-file {
+      padding-left: 3.2rem; } }
+  @media (max-width: 450px) {
+    #none-file {
+      padding-left: 2.5rem; } }
+  @media (max-width: 360px) {
+    #none-file {
+      padding-left: 1.5rem; } }
+  @media (max-width: 295px) {
+    #none-file {
+      padding-left: .6rem; } }
+  @media (max-width: 280px) {
+    #none-file {
+      padding-left: .2rem; } }
 
 .file-show-name {
   flex: 1.7;

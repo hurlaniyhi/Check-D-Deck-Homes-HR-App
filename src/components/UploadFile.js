@@ -8,7 +8,7 @@ const UploadFile = () => {
 
     const {state, saveFile} = useContext(DataManager)
 
-    const [upload, setUpload] = useState({description: "", file: null, selected: ""})
+    const [upload, setUpload] = useState({description: "", file: null, selected: "Choose file"})
 
     function handleDescription(e){
         
@@ -30,7 +30,7 @@ const UploadFile = () => {
         await saveFile(upload.file, data)
         document.querySelector("#loads").style.display = "none"
         document.querySelector("#normals").style.display = "block"
-        setUpload({...upload, selected: "", description: ""})
+        setUpload({...upload, selected: "", description: "Choose file"})
     }
 
     return(
@@ -51,7 +51,8 @@ const UploadFile = () => {
                     <input type="file" id="document" onChange={handleFile} class="input-file" required/>
                     <div className="test-file">
                         <label className="test-content" for="document">Browse</label>
-                        <p className="test-text">{upload.selected}</p>
+                        {upload.selected === "Choose file" ? <p className="test-text" id="none-file">{upload.selected}</p>: 
+                        <p className="test-text">{upload.selected}</p>}
                     </div>
                 </div>
 
