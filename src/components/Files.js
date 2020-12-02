@@ -26,8 +26,7 @@ const Files = () => {
     }, [])
 
 
-   function getFile(data, id){
-       
+   function getFile(data, id){  
        downloadFile(data, id)
     }
 
@@ -39,6 +38,8 @@ const Files = () => {
         }   
     }
 
+
+    const status = localStorage.getItem("fileViewer")
 
     
     const files = state.files.map(file =>{
@@ -83,7 +84,8 @@ const Files = () => {
                     </div>
                     <div className="file-name">
                         <FaDownload className="file-download" onClick={()=>getFile(file.fileBinary, file._id)} />
-                        <FaTrash className="file-download" onClick={()=>removeFile(file.gfsId, file._id)} />
+                        {status !== "staff" ?
+                        <FaTrash className="file-download" onClick={()=>removeFile(file.gfsId, file._id)} /> : null}
                     </div>
                 
                 </div>:
