@@ -1632,7 +1632,7 @@ body{
   width: 18.5rem;
   height: 18.5rem;
   border-radius: 50%;
-  image-orientation: from-image;
+  overflow: hidden;
   // position: relative;
 
   @media (max-width: 450px){
@@ -1903,5 +1903,56 @@ body{
   word-break: break-all; 
   @media (max-width: 420px){
     padding-bottom: 1.2rem;
+  }
+}
+
+
+
+// MODAL
+
+.modal-header{
+  position: relative;
+}
+
+.modal-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-note{
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.crop-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+    @media (max-width: 905px){
+      //flex-direction: column;
+    }
+}
+
+.cropped-image{
+  width: 18rem;
+   height: 18rem; 
+   border-radius: 50%;
+   margin-left: 1.5rem;
+   @media (max-width: 360px){
+    margin-top: 3rem;
+   }
+ 
+}
+
+.ReactCrop__image{
+ 
+  @media (max-width: 600px){
+   // width: 35rem
   }
 }

@@ -1081,7 +1081,7 @@ body {
   width: 18.5rem;
   height: 18.5rem;
   border-radius: 50%;
-  image-orientation: from-image; }
+  overflow: hidden; }
   @media (max-width: 450px) {
     .user-img {
       width: 15rem;
@@ -1287,3 +1287,33 @@ body {
   @media (max-width: 420px) {
     .text-text {
       padding-bottom: 1.2rem; } }
+
+.modal-header {
+  position: relative; }
+
+.modal-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.popup-note {
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  text-align: center; }
+
+.crop-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+
+.cropped-image {
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  margin-left: 1.5rem; }
+  @media (max-width: 360px) {
+    .cropped-image {
+      margin-top: 3rem; } }

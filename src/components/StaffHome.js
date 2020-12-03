@@ -18,6 +18,7 @@ const StaffHome = () => {
 
     return(
         <div className="Admin-home-container">
+
             <div className="card-title-container">
                 <p className="card-title">Quick Access</p>
                 <FaAngleDoubleRight className="access-icon"/>

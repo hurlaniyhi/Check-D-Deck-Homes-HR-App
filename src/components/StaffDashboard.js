@@ -2,7 +2,7 @@ import React, {useEffect, useContext, useState} from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect, Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import { FaSignOutAlt, FaCamera, FaPencilAlt } from 'react-icons/fa'
-import barImage from '../assets/admin-image6.jpg'
+import dp from '../assets/dp3.jpg'
 import barLogo from '../assets/ourlogo.png'
 import userImage2 from '../assets/userdp.jpg'
 import Progress from "./Progress"
@@ -14,18 +14,109 @@ import StaffHome from './StaffHome'
 import ChangePassword from './ChangePassword'
 import UploadFile from './UploadFile'
 import DataManager from "../context/dataManager"
+import { Modal, Button } from "react-bootstrap";
+import ReactCrop from 'react-image-crop'
+import 'react-image-crop/dist/ReactCrop.css'
 
 
 
 const StaffDashboard = () => {
 
     const {state, fetchUser, uploadDP} = useContext(DataManager)
-
     const [preview, setPreview] = useState({image: null})
+
+    const [crop, setCrop] = useState({unit: "%", aspect: 1 / 1, width: 100, height: 75});
+    const [info, setInfo] = useState({src: null, image: null, croppedUrl: "", croppedImage: null, filename: ""})
+
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false)
+        setInfo({...info, croppedImage: null, src: null})
+    };
+    const handleShow = () => setShow(true);
+
+
+    /******************* IMAGE CROP FUNCTIONS *******************************/
+   
+    const onImageLoaded = image => {
+        setInfo({...info, image: image})
+     }
+     
+    function handleComplete(crop, percentCrop){
+        console.log(crop)
+        if (info.image && crop.width && crop.height) {
+         const croppedImageUrl = getCroppedImg(info.image, crop)
+         setInfo({...info, croppedUrl: croppedImageUrl })
+     }
+    }
+
+    function getCroppedImg(image, crop) {
+        const canvas = document.createElement("canvas");
+        const scaleX = image.naturalWidth / image.width;
+        const scaleY = image.naturalHeight / image.height;
+        canvas.width = crop.width;
+        canvas.height = crop.height;
+        const ctx = canvas.getContext("2d");
+        
+        ctx.drawImage(
+            image,
+            crop.x * scaleX,
+            crop.y * scaleY,
+            crop.width * scaleX,
+            crop.height * scaleY,
+            0,
+            0,
+            crop.width,
+            crop.height
+         )
+    
+        const reader = new FileReader()
+        canvas.toBlob(blob => {
+            reader.readAsDataURL(blob)
+            reader.onloadend = () => {
+               // setInfo({...info, croppedImage: reader.result })
+                dataURLtoFile(reader.result, info.filename)
+            }
+        })
+    }
+    
+        function dataURLtoFile(dataurl, filename) {
+        let arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), 
+            n = bstr.length, 
+            u8arr = new Uint8Array(n);
+            console.log(mime)
+                
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        let croppedImage = new File([u8arr], filename, {type:mime});
+        setInfo({...info, croppedImage: URL.createObjectURL(croppedImage), croppedUrl: croppedImage }) 
+    }
+
+
+    const handleFile = (e) => {
+       
+        const fileReader = new FileReader()
+        fileReader.onloadend = async() => {
+            setInfo({...info, src: fileReader.result, filename: e.target.files[0].name, croppedUrl: e.target.files[0]})
+        }   
+        fileReader.readAsDataURL(e.target.files[0])
+    
+        handleShow()
+    }
+/*********************************************************************************************************/
+
+    //USE EFFECT
 
     useEffect(()=>{
         userInfo()
     }, [])
+
+    // **********************
 
     const userInfo = async()=>{
        
@@ -43,23 +134,28 @@ const StaffDashboard = () => {
         
     }
 
-    const handleImage = async(e)=>{
-        setPreview({...preview, image: URL.createObjectURL(e.target.files[0])})
+    const handleImage = async()=>{
+        // setInfo({...info, src: URL.createObjectURL(e.target.files[0])})
+        // setInfo({...info, filename: e.target.files[0].name})
         
-        document.querySelector("#both").style.display = "none"
-        document.querySelector("#both2").style.display = "none"
-        document.querySelector("#preview").style.display = "block"
-        document.querySelector("#preview2").style.display = "block"
+        // document.querySelector("#both").style.display = "none"
+        // document.querySelector("#both2").style.display = "none"
+        // document.querySelector("#preview").style.display = "block"
+        // document.querySelector("#preview2").style.display = "block"
 
+       
+        handleClose()
         const data = new FormData()
-        data.append('picture', e.target.files[0])
-
+        console.log(info.croppedUrl)
+        console.log(info.filename)
+        data.append('picture', info.croppedUrl)
+         
         await uploadDP(data)
-
-        document.querySelector("#both").style.display = "block"
-        document.querySelector("#both2").style.display = "block"
-        document.querySelector("#preview").style.display = "none"
-        document.querySelector("#preview2").style.display = "none"
+        setInfo({...info, croppedImage: "", src: null, croppedUrl: null, image: null})
+        // document.querySelector("#both").style.display = "block"
+        // document.querySelector("#both2").style.display = "block"
+        // document.querySelector("#preview").style.display = "none"
+        // document.querySelector("#preview2").style.display = "none"
         
     }
 
@@ -123,9 +219,10 @@ const StaffDashboard = () => {
                     
                     <div className="bar-user">
                     {/* <img src={userImage} className="bar-image" /> */}
-                    {state.user.profilePicture ? <img src={state.user.profilePicture} className="bar-image" id="both" /> : 
-                    <img src={userImage2} className="bar-image" id="both" />}
-                    <img src={preview.image} className="bar-image" id="preview" style={{display: "none"}} />
+                    {info.croppedImage ? <img src={info.croppedImage} className="bar-image" />:
+                    // info.src ? <img src={info.src} className="bar-image"  />:
+                    state.user.profilePicture ? <img src={state.user.profilePicture} className="bar-image" /> :
+                    <img src={userImage2} className="bar-image"  />}
                         <p className="bar-username">Staff Dashboard</p>
                     </div>
                     <Link to="/staff/home"><img className="logo-bar" src={barLogo}/></Link>
@@ -133,17 +230,58 @@ const StaffDashboard = () => {
 
                 <div className="staff-header">
 
-                    {state.user.profilePicture ? <img src={state.user.profilePicture} className="user-img" id="both2" /> : 
-                    <img src={userImage2} className="user-img" id="both2" />}
-                    <img src={preview.image} className="user-img" id="preview2" style={{display: "none"}} />
+                    {info.croppedImage ? <img src={info.croppedImage} className="user-img" />:
+                    // info.src ? <img src={info.src} className="bar-image" />:
+                    state.user.profilePicture ? <img src={state.user.profilePicture} className="user-img"  /> : 
+                    <img src={userImage2} className="user-img" />}
 
                     <div className="mydp">
-                        <input type="file" onChange={handleImage} className="input-dp" id="dp" />
+                        <input type="file" onChange={handleFile} className="input-dp" id="dp" />
                         <label className="dp-placeholder" for="dp">
                             <p>Change Picture</p>
                             <FaPencilAlt className="file-icon" />
-                            </label>
+                        </label>
                     </div>
+
+                        <Modal
+                            show={show}
+                            onHide={handleClose}
+                            backdrop="static"
+                            keyboard={false}
+                            centered
+                            size="lg"
+                             aria-labelledby="example-custom-modal-styling-title"
+                        >
+                            <Modal.Header closeButton>
+                            <Modal.Title id="example-custom-modal-styling-title">Modal title</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+
+                                <p className="popup-note">Kindly drag to position the chosen profile picture</p>
+                                
+                                <div className="crop-container">
+                                    <ReactCrop 
+                                        imageStyle={{ width: "25rem", height: "35rem"}} 
+                                        src={info.src} 
+                                        crop={crop} 
+                                        onChange={newCrop => setCrop(newCrop)} 
+                                        onComplete={(crop, percentCrop) => handleComplete(crop, percentCrop)}
+                                        onImageLoaded={(image)=> onImageLoaded(image)}
+                                        locked 
+                                    />
+                                     { info.croppedImage ? <img src={info.croppedImage} className="cropped-image"  />:
+                                     <img src={info.src} className="cropped-image"  />}
+                                </div>
+                            
+                            </Modal.Body>
+                            <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="primary" onClick={handleImage}>Upload</Button>
+                            </Modal.Footer>
+                        </Modal>
+
                     <div className="user-details">
                         <p className="user-name">{state.user.firstName} {state.user.lastName}</p>
                         <p className="user-infos">{state.user.department} Department</p>
