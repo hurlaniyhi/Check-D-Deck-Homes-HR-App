@@ -33,7 +33,7 @@ const StaffDashboard = () => {
 
     const handleClose = () => {
         setShow(false)
-        setInfo({...info, croppedImage: null, src: null})
+        setInfo({...info, src: null})
     };
     const handleShow = () => setShow(true);
 
@@ -99,10 +99,13 @@ const StaffDashboard = () => {
 
 
     const handleFile = (e) => {
-       
         const fileReader = new FileReader()
         fileReader.onloadend = async() => {
-            setInfo({...info, src: fileReader.result, filename: e.target.files[0].name, croppedUrl: e.target.files[0]})
+            setInfo({...info, src: fileReader.result, 
+                filename: e.target.files[0].name, 
+                croppedUrl: e.target.files[0],
+                croppedImage: URL.createObjectURL(e.target.files[0])
+            })
         }   
         fileReader.readAsDataURL(e.target.files[0])
     
@@ -219,7 +222,8 @@ const StaffDashboard = () => {
                     
                     <div className="bar-user">
                     {/* <img src={userImage} className="bar-image" /> */}
-                    {info.croppedImage ? <img src={info.croppedImage} className="bar-image" />:
+                    {
+                    // info.croppedImage ? <img src={info.croppedImage} className="bar-image" />:
                     // info.src ? <img src={info.src} className="bar-image"  />:
                     state.user.profilePicture ? <img src={state.user.profilePicture} className="bar-image" /> :
                     <img src={userImage2} className="bar-image"  />}
@@ -230,7 +234,8 @@ const StaffDashboard = () => {
 
                 <div className="staff-header">
 
-                    {info.croppedImage ? <img src={info.croppedImage} className="user-img" />:
+                    {
+                    // info.croppedImage ? <img src={info.croppedImage} className="user-img" />:
                     // info.src ? <img src={info.src} className="bar-image" />:
                     state.user.profilePicture ? <img src={state.user.profilePicture} className="user-img"  /> : 
                     <img src={userImage2} className="user-img" />}
@@ -253,12 +258,12 @@ const StaffDashboard = () => {
                              aria-labelledby="example-custom-modal-styling-title"
                         >
                             <Modal.Header closeButton>
-                            <Modal.Title id="example-custom-modal-styling-title">Modal title</Modal.Title>
+                            <Modal.Title id="example-custom-modal-styling-title">Profile Picture Upload</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
 
                                 <p className="popup-note">Kindly drag to position the chosen profile picture</p>
-                                
+    
                                 <div className="crop-container">
                                     <ReactCrop 
                                         imageStyle={{ width: "25rem", height: "35rem"}} 
@@ -269,8 +274,8 @@ const StaffDashboard = () => {
                                         onImageLoaded={(image)=> onImageLoaded(image)}
                                         locked 
                                     />
-                                     { info.croppedImage ? <img src={info.croppedImage} className="cropped-image"  />:
-                                     <img src={info.src} className="cropped-image"  />}
+                                   <img src={info.croppedImage} className="cropped-image"  />
+                                   
                                 </div>
                             
                             </Modal.Body>

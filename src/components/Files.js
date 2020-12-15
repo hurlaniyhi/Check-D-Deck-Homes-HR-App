@@ -74,7 +74,7 @@ const Files = () => {
                         getExt == "txt" ? <AiFillFileText className="file-icon" style={{color: "black"}} />:
                         getExt == "doc" ? <AiFillFileWord className="file-icon" style={{color: "blue"}} />:
                         getExt == "ppt" ? <AiFillFilePpt className="file-icon" style={{color: "red"}} />:
-                        getExt == "xls" ? <AiFillFileExcel className="file-icon" style={{color: "green"}}/>:
+                        getExt == "xlsx" ? <AiFillFileExcel className="file-icon" style={{color: "green"}}/>:
                         getExt == "jpg" || getExt == "png" || getExt == "jpeg" ? <AiFillFileImage className="file-icon" style={{color: "green"}}/>:
                         getExt == "zip" ? <AiFillFileZip className="file-icon" style={{color: "#A06727"}}/>:
                         getExt == "mp3" ? <AiFillAudio className="file-icon" style={{color: "black"}} />: 
